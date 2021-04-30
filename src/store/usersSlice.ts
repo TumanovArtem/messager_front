@@ -5,18 +5,27 @@ import { IUsersStore } from 'src/interfaces/store';
 const initialState : IUsersStore = {
   data: [
     {
+      id: 0,
       login: 'Chanaaar',
+      role: 'seller',
+      avatar: 'static/img/seller.png',
       rating: 55
     },
     {
-      login: 'Vasya',
+      id: 1,
+      login: 'NotChanaaar',
+      role: 'buyer',
+      avatar: 'static/img/buyer.png',
       rating: -5
     }
   ],
   currentUser: {
-    login: 'Buyer',
-    rating: -20
-  }
+      id: 0,
+      login: 'Chanaaar',
+      role: 'seller',
+      avatar: 'static/img/seller.png',
+      rating: 55
+    },
 };
 
 export const usersSlice = createSlice({
@@ -27,7 +36,7 @@ export const usersSlice = createSlice({
       state.data.push(action.payload);
     }
   } 
-})
+});
 
 export const { addUser } = usersSlice.actions;
 

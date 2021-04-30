@@ -1,0 +1,8 @@
+.message {
+  background: #fff;
+}
+
+.message.this-user {
+  background: #617391;
+  color: #fff;
+}

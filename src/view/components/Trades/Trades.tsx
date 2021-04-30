@@ -1,21 +1,20 @@
 import React, { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addUser } from 'src/store/users/usersSlice';
+import { useSelector } from 'react-redux';
+import { IStoreState, IUsersStore } from 'src/interfaces/store';
+import { TradeCard } from '../TradeCard';
 import './Trades.style.css';
 
 export const Trades : FC = () => {
-  const dispatch = useDispatch();
-  const users = useSelector(state => state);
+  const currentUser = useSelector((state : IStoreState) => state.users.currentUser);
+  const trades = useSelector((state: IStoreState) => 
+    state.trades.data.filter(trade => 
+      trade.buyerId === currentUser.id || trade.sellerId === currentUser.id
+    )
+  );
   
-  const handleClick = () => {
-    dispatch(addUser({
-      login: 'Diana',
-      rating: 5
-    }));
-  };
   return (
-    <div className="user-info">
-      <button onClick={handleClick}></button>
+    <div className="trades">
+      {trades.map(trade => <TradeCard key={trade.id} trade={trade} user={currentUser} />)}
     </div>
   )
 };

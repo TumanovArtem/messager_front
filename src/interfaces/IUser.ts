@@ -1,4 +1,7 @@
 export interface IUser {
-  login: string,
-  rating: number
+  id: number;
+  login: string;
+  role: 'buyer' | 'seller';
+  avatar: string;
+  rating: number;
 }
