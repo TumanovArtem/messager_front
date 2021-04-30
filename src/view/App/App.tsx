@@ -1,13 +1,15 @@
-import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import SellBitcoinsPage from './SellBitcoinsPage/SellBitcoinsPage';
+import SellBitcoinsPage from 'src/view/pages/SellBitcoinsPage/SellBitcoinsPage';
+import { Nav } from '../components/Nav';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
+      <Nav />
       <Router>
         <Switch>
-          <Route path='/sell-bitcoins'>
+          <Route exact path='/sell-bitcoins'>
             <SellBitcoinsPage />
           </Route>
         </Switch>

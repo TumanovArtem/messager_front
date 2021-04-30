@@ -1,18 +1,16 @@
 import React, {FC} from 'react';
-import { Menu } from 'src/Menu';
-import { Messager } from 'src/Messager';
-import { Nav } from 'src/Nav';
-import { UserInfo } from 'src/UserInfo';
-import { UsersList } from 'src/UsersList';
+import { Menu } from 'src/view/components/Menu';
+import { Messager } from 'src/view/components/Messager';
+import { UserInfo } from 'src/view/components/UserInfo';
+import { Trades } from 'src/view/components/Trades';
 import './SellBitcoinsPage.style.css';
 
 export const SellBitcoinsPage : FC = () => {
   return (
     <div className="bitcoins-page">
-      <Nav />
       <Menu />
       <div className="content">
-        <UsersList />
+        <Trades />
         <Messager />
         <UserInfo />
       </div>
