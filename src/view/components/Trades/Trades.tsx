@@ -6,6 +6,7 @@ import './Trades.style.css';
 
 export const Trades : FC = () => {
   const currentUser = useSelector((state : IStoreState) => state.users.currentUser);
+  const currentTrade = useSelector((state : IStoreState) => state.trades.currentTrade);
   const trades = useSelector((state: IStoreState) => 
     state.trades.data.filter(trade => 
       trade.buyerId === currentUser.id || trade.sellerId === currentUser.id
@@ -14,7 +15,7 @@ export const Trades : FC = () => {
   
   return (
     <div className="trades">
-      {trades.map(trade => <TradeCard key={trade.id} trade={trade} user={currentUser} />)}
+      {trades.map(trade => <TradeCard key={trade.id} trade={trade} currentTrade={currentTrade} user={currentUser} />)}
     </div>
   )
 };
