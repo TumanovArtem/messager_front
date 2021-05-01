@@ -4,7 +4,7 @@ import './UserInfo.style.css';
 export const UserInfo : FC = () => {
   return (
     <div className="user-info">
-      Users List
+      User Info
     </div>
   )
 };
