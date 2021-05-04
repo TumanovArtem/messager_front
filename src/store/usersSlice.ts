@@ -6,26 +6,23 @@ const initialState : IUsersStore = {
   data: [
     {
       id: 0,
-      login: 'Chanaaar',
-      role: 'seller',
-      avatar: 'static/img/seller.png',
-      rating: 55
+      login: 'Batman',
+      avatar: 'static/img/buyer.png',
+      rating: -5
     },
     {
       id: 1,
-      login: 'NotChanaaar',
-      role: 'buyer',
-      avatar: 'static/img/buyer.png',
-      rating: -5
-    }
-  ],
-  currentUser: {
-      id: 0,
       login: 'Chanaaar',
-      role: 'seller',
       avatar: 'static/img/seller.png',
       rating: 55
     },
+  ],
+  currentUser: {
+    id: 0,
+    login: 'Batman',
+    avatar: 'static/img/buyer.png',
+    rating: -5
+  },
 };
 
 export const usersSlice = createSlice({

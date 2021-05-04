@@ -12,23 +12,25 @@ export const TradeCard: FC<{
   user: IUser;
 }> = ({trade, currentTrade, user}) => {
   const dispatch = useDispatch();
-  const currentTradeId = currentTrade.id;
+  const counterUser = useSelector((state: IStoreState) =>
+    state.users.data.find((user : IUser) => user.id === currentTrade.buyerId));
 
+  const currentTradeId = currentTrade.id;
   const handleClick = () => {
     dispatch(changeCurrentTrade(trade));
   };
   
-  const isCurrentTrade = useMemo(()=> currentTradeId === trade.id ? 'active': '', [currentTradeId]);
+  const isCurrentTrade = currentTradeId === trade.id ? 'active': '';
 
   return (
     <div className={`trade-card ${isCurrentTrade}`} onClick={handleClick} >
       <div className='trade-info'>
-        <p>{user.login} is buying</p>
+        <p>{counterUser?.login} is buying</p>
         <p>{trade.method}</p>
         <p>{trade.money} USD</p>
       </div>
       <div className='payment-status'>
-        <img className='avatar' src={user.avatar} alt=''/>
+        <img className='avatar' src={counterUser?.avatar} alt=''/>
         <p>{trade.paid ? 'PAID' : 'NOT PAID'}</p>
       </div>
     </div>
