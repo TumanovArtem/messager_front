@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 import { IUser } from 'src/interfaces/IUser';
 import { IUsersStore } from 'src/interfaces/store';
+import { switchRoles } from './tradesSlice';
 
 const initialState : IUsersStore = {
   data: [
@@ -32,12 +34,12 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    addUser: (state, action: PayloadAction<IUser>) => {
-      state.data.push(action.payload);
+    switchUser: (state) => {
+      state.currentUser = state.currentUser.id === 0 ? state.data[1] : state.data[0];
     }
   } 
 });
 
-export const { addUser } = usersSlice.actions;
+export const { switchUser } = usersSlice.actions;
 
 export default usersSlice.reducer;

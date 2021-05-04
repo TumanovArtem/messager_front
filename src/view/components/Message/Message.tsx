@@ -7,7 +7,7 @@ export const Message : FC<{
   avatar: string | undefined,
   isFromThisUser: boolean
 }> = ({ message, avatar, isFromThisUser }) => {
-
+  
   return (
     <div className={`message-wrapper ${isFromThisUser && 'this-user'}`}>
       <div className='message'>{message.text}</div>

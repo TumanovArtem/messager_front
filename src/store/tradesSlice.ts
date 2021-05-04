@@ -65,9 +65,22 @@ export const tradesSlice = createSlice({
         data: newData,
         currentTrade: newData[0]
       }
+    },
+    switchRoles: (state) => {
+      const newData = state.data.map((trade: ITrade) => {
+        const sellerId = trade.sellerId;
+        const buyerId = trade.buyerId;
+        const newTrade = {
+          ...trade,
+          sellerId: buyerId, 
+          buyerId: sellerId,
+        }
+        return newTrade;
+      });
+      return {...state, data: newData};
     }
   }
 });
 
-export const { changeCurrentTrade, executeTransaction, deleteTrade } = tradesSlice.actions;
+export const { changeCurrentTrade, executeTransaction, deleteTrade, switchRoles } = tradesSlice.actions;
 export default tradesSlice.reducer;

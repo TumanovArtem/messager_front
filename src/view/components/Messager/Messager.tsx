@@ -6,8 +6,9 @@ import { Message } from '../Message';
 import nextId from "react-id-generator";
 import './Messager.style.css';
 import { IUser } from 'src/interfaces/IUser';
-import { DeleteOutlined, DeleteRounded } from '@material-ui/icons';
-import { deleteTrade } from 'src/store/tradesSlice';
+import { DeleteRounded, Person } from '@material-ui/icons';
+import { deleteTrade, switchRoles } from 'src/store/tradesSlice';
+import { switchUser } from 'src/store/usersSlice';
 
 export const Messager : FC = () => {
   const dispatch = useDispatch();
@@ -27,8 +28,13 @@ export const Messager : FC = () => {
 
   const [value, setValue] = useState('');
 
-  const handleClick = () => {
+  const handleDeleteTrade = () => {
     dispatch(deleteTrade(currentTrade));
+  };
+
+  const handleSwitchUser = () => {
+    dispatch(switchRoles());
+    dispatch(switchUser());
   };
 
   const handleChange = (e : any) => {
@@ -46,8 +52,6 @@ export const Messager : FC = () => {
     }));
     setValue('');
     e.preventDefault();
-    console.log(value);
-    console.log(nextId());
   };
 
   return (
@@ -56,10 +60,13 @@ export const Messager : FC = () => {
         <>
           <div className="messager-header">
             <button className='delete-trade'>
-              <DeleteRounded onClick={handleClick}/>
+              <DeleteRounded onClick={handleDeleteTrade}/>
             </button>
             <h1>{currentTrade.method}</h1>
             <p>{counterUser?.login}</p>
+            <button className='switch-user'>
+              <Person onClick={handleSwitchUser}/>
+            </button>
           </div>
           <div className="messages-space">
             <ul>
