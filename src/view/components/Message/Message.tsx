@@ -4,12 +4,14 @@ import './Message.style.css';
 
 export const Message : FC<{
   message: IMessage,
+  avatar: string | undefined,
   isFromThisUser: boolean
-}> = ({ message, isFromThisUser }) => {
+}> = ({ message, avatar, isFromThisUser }) => {
 
   return (
-    <div className={`message ${isFromThisUser && 'this-user'}`}>
-      {message.text}
+    <div className={`message-wrapper ${isFromThisUser && 'this-user'}`}>
+      <div className='message'>{message.text}</div>
+      <img className='avatar' src={avatar} alt=""/>
     </div>
   )
 };

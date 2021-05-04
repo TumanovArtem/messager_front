@@ -5,6 +5,7 @@ import { addMessage } from 'src/store/massagesSlice';
 import { Message } from '../Message';
 import nextId from "react-id-generator";
 import './Messager.style.css';
+import { IUser } from 'src/interfaces/IUser';
 
 export const Messager : FC = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,12 @@ export const Messager : FC = () => {
   const currentTrade = useSelector((state : IStoreState) => state.trades.currentTrade);
   const messages = useSelector((state : IStoreState) => 
     state.messages.data.filter(message => message.tradeId === currentTrade.id)
+  );
+
+  const counterUser = useSelector((state : IStoreState) => 
+    state.users.data.find((user : IUser) => 
+      user.id === currentTrade.buyerId
+    )
   );
 
   const [value, setValue] = useState('');
@@ -40,11 +47,18 @@ export const Messager : FC = () => {
     <div className="messager">
       <div className="messager-header">
         <h1>{currentTrade.method}</h1>
-        <p>{currentUser.login}</p>
+        <p>{counterUser?.login}</p>
       </div>
       <div className="messages-space">
         <ul>
-        {messages.map(message => <Message key={message.id} message={message} isFromThisUser={currentUser.id === message.fromId}/>)}
+        {messages.map(message => 
+          <Message 
+            key={message.id} 
+            message={message}
+            avatar={currentUser.id === message.fromId ? currentUser.avatar: counterUser?.avatar}
+            isFromThisUser={currentUser.id === message.fromId}
+          />)
+        }
         </ul>
       </div>
       <form onSubmit={handleSubmit}>

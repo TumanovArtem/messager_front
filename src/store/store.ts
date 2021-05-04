@@ -21,8 +21,8 @@ export const store = configureStore({
   middleware: [
     ...getDefaultMiddleware({
       thunk: true
-    }),
-    epicMiddleware
+    })//,
+    //epicMiddleware
   ]
 });
 
