@@ -9,8 +9,7 @@ import { IStoreState } from 'src/interfaces/store';
 export const TradeCard: FC<{
   trade: ITrade;
   currentTrade: ITrade;
-  user: IUser;
-}> = ({trade, currentTrade, user}) => {
+}> = ({trade, currentTrade}) => {
   const dispatch = useDispatch();
   const counterUser = useSelector((state: IStoreState) =>
     state.users.data.find((user : IUser) => user.id === currentTrade.buyerId));

@@ -67,7 +67,7 @@ export const tradesSlice = createSlice({
       }
     },
     switchRoles: (state) => {
-      const newData = state.data.map((trade: ITrade) => {
+      const data = state.data.map((trade: ITrade) => {
         const sellerId = trade.sellerId;
         const buyerId = trade.buyerId;
         const newTrade = {
@@ -77,7 +77,8 @@ export const tradesSlice = createSlice({
         }
         return newTrade;
       });
-      return {...state, data: newData};
+      const currentTrade : any = data.find((trade : ITrade) => trade.id === state.currentTrade.id);
+      return {...state, data, currentTrade };
     }
   }
 });

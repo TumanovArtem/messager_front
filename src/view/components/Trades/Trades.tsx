@@ -15,7 +15,7 @@ export const Trades : FC = () => {
   
   return (
     <div className="trades">
-      {trades.map(trade => <TradeCard key={trade.id} trade={trade} currentTrade={currentTrade} user={currentUser} />)}
+      {trades.map(trade => <TradeCard key={trade.id} trade={trade} currentTrade={currentTrade} />)}
     </div>
   )
 };
