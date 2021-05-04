@@ -8,20 +8,23 @@ const initialState : IUsersStore = {
       id: 0,
       login: 'Batman',
       avatar: 'static/img/buyer.png',
-      rating: -5
+      ratingPros: 37,
+      ratingCons: 1
     },
     {
       id: 1,
       login: 'Chanaaar',
       avatar: 'static/img/seller.png',
-      rating: 55
+      ratingPros: 20,
+      ratingCons: 2
     },
   ],
   currentUser: {
     id: 0,
     login: 'Batman',
     avatar: 'static/img/buyer.png',
-    rating: -5
+    ratingPros: 37,
+    ratingCons: 1
   },
 };
 

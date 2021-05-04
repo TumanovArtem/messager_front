@@ -6,23 +6,30 @@ import { Message } from '../Message';
 import nextId from "react-id-generator";
 import './Messager.style.css';
 import { IUser } from 'src/interfaces/IUser';
+import { DeleteOutlined, DeleteRounded } from '@material-ui/icons';
+import { deleteTrade } from 'src/store/tradesSlice';
 
 export const Messager : FC = () => {
   const dispatch = useDispatch();
 
   const currentUser = useSelector((state: IStoreState) => state.users.currentUser);
   const currentTrade = useSelector((state : IStoreState) => state.trades.currentTrade);
+  const trades = useSelector((state : IStoreState) => state.trades.data);
   const messages = useSelector((state : IStoreState) => 
-    state.messages.data.filter(message => message.tradeId === currentTrade.id)
+    state.messages.data.filter(message => message.tradeId === currentTrade?.id)
   );
 
   const counterUser = useSelector((state : IStoreState) => 
     state.users.data.find((user : IUser) => 
-      user.id === currentTrade.buyerId
+      user.id === currentTrade?.buyerId
     )
   );
 
   const [value, setValue] = useState('');
+
+  const handleClick = () => {
+    dispatch(deleteTrade(currentTrade));
+  };
 
   const handleChange = (e : any) => {
     setValue(e.target.value);
@@ -45,26 +52,33 @@ export const Messager : FC = () => {
 
   return (
     <div className="messager">
-      <div className="messager-header">
-        <h1>{currentTrade.method}</h1>
-        <p>{counterUser?.login}</p>
-      </div>
-      <div className="messages-space">
-        <ul>
-        {messages.map(message => 
-          <Message 
-            key={message.id} 
-            message={message}
-            avatar={currentUser.id === message.fromId ? currentUser.avatar: counterUser?.avatar}
-            isFromThisUser={currentUser.id === message.fromId}
-          />)
-        }
-        </ul>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" onChange={handleChange} value={value} />
-        <input type="submit" value="SEND" />
-      </form>
+      {!trades.length ? 'No trades available': (
+        <>
+          <div className="messager-header">
+            <button className='delete-trade'>
+              <DeleteRounded onClick={handleClick}/>
+            </button>
+            <h1>{currentTrade.method}</h1>
+            <p>{counterUser?.login}</p>
+          </div>
+          <div className="messages-space">
+            <ul>
+            {messages.map(message => 
+              <Message 
+                key={message.id} 
+                message={message}
+                avatar={currentUser.id === message.fromId ? currentUser.avatar: counterUser?.avatar}
+                isFromThisUser={currentUser.id === message.fromId}
+              />)
+            }
+            </ul>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <input type="text" onChange={handleChange} value={value} />
+            <input type="submit" value="SEND" />
+          </form>
+        </>
+      )}
     </div>
   )
 };

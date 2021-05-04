@@ -1,4 +1,4 @@
-import { AnyAction, combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { AnyAction, applyMiddleware, combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import usersReducer from 'src/store/usersSlice';
 import tradesReducer from 'src/store/tradesSlice';
 import messagesReducer from 'src/store/massagesSlice';
@@ -16,14 +16,11 @@ export type MyEpic = Epic<AnyAction, AnyAction, MyState>;
 
 const epicMiddleware = createEpicMiddleware<AnyAction, AnyAction, MyState>();
 
+const enhancer = applyMiddleware(epicMiddleware);
+
 export const store = configureStore({
-  reducer,
-  middleware: [
-    ...getDefaultMiddleware({
-      thunk: true
-    })//,
-    //epicMiddleware
-  ]
+  reducer//,
+  //enhancers: [enhancer]
 });
 
 //epicMiddleware.run(bitcoinRateEpic);
