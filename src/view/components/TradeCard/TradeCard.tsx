@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useMemo } from 'react';
 import { ITrade } from 'src/interfaces/ITrade';
 import { IUser } from 'src/interfaces/IUser';
-import { changeCurrentTrade } from 'src/store/tradesSlice';
+import { changeCurrentTrade } from 'src/store/slices/tradesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import './TradeCard.style.css';
 import { IStoreState } from 'src/interfaces/store';
 import { IMessage } from 'src/interfaces/IMessage';
-import { readMessages } from 'src/store/massagesSlice';
+import { readMessages } from 'src/store/slices/massagesSlice';
 
 export const TradeCard: FC<{
   trade: ITrade;
@@ -49,7 +49,7 @@ export const TradeCard: FC<{
         <div className={`new-messages-indicator ${newMessages.length && 'active'}`}></div>
         <p>{counterUser?.login} is buying</p>
         <p>{trade.method}</p>
-        <p>{trade.money} USD ({(trade.money / Number(bitcoinRate)).toFixed(8)} BTC)</p>
+        <p>{trade.amount} USD ({(trade.amount / Number(bitcoinRate)).toFixed(8)} BTC)</p>
       </div>
       <div className='payment-status'>
         <img className='avatar' src={`/${counterUser?.avatar}`} alt=''/>

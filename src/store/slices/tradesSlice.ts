@@ -10,7 +10,7 @@ const initialState : ITradesStore = {
       sellerId: 0,
       buyerId: 1,
       method: 'Amazon Gift Card',
-      money: 77,
+      amount: 77,
       paid: true
     },
     {
@@ -19,7 +19,7 @@ const initialState : ITradesStore = {
       sellerId: 0,
       buyerId: 1,
       method: 'iTunes Gift Card',
-      money: 30,
+      amount: 30,
       paid: false
     },
     {
@@ -28,7 +28,7 @@ const initialState : ITradesStore = {
       sellerId: 0,
       buyerId: 1,
       method: 'PayPal',
-      money: 500,
+      amount: 500,
       paid: false
     }
   ],
@@ -38,7 +38,7 @@ const initialState : ITradesStore = {
     sellerId: 0,
     buyerId: 1,
     method: 'Amazon Gift Card',
-    money: 77,
+    amount: 77,
     paid: true
   }
 }

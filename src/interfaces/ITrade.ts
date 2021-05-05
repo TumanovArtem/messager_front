@@ -4,6 +4,6 @@ export interface ITrade {
   sellerId: number;
   buyerId: number;
   method: string;
-  money: number;
+  amount: number;
   paid: boolean;
 }

@@ -1,13 +1,13 @@
 import React, {FC, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IStoreState } from 'src/interfaces/store';
-import { addMessage } from 'src/store/massagesSlice';
+import { addMessage } from 'src/store/slices/massagesSlice';
 import { Message } from '../Message';
 import './Messager.style.css';
 import { IUser } from 'src/interfaces/IUser';
 import { DeleteRounded, Person } from '@material-ui/icons';
-import { deleteTrade, switchRoles } from 'src/store/tradesSlice';
-import { switchUser } from 'src/store/usersSlice';
+import { deleteTrade, switchRoles } from 'src/store/slices/tradesSlice';
+import { switchUser } from 'src/store/slices/usersSlice';
 
 export const Messager : FC = () => {
   const dispatch = useDispatch();

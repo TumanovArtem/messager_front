@@ -1,8 +1,9 @@
+import { Avatar } from 'src/view/components/Avatar';
 import React, {FC} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IUser } from 'src/interfaces/IUser';
 import { IStoreState } from 'src/interfaces/store';
-import { executeTransaction } from 'src/store/tradesSlice';
+import { executeTransaction } from 'src/store/slices/tradesSlice';
 import './UserInfo.style.css';
 
 export const UserInfo : FC = () => {
@@ -30,7 +31,7 @@ export const UserInfo : FC = () => {
           <button onClick={handleClick}>Release bitcoins</button>
           <div className="table">
             <div>
-              <img src={`/${counterUser?.avatar}`} alt="" className="avatar"/>
+              <Avatar src={counterUser?.avatar} login={counterUser?.login}/>
               <p>
                 <span>+{counterUser?.ratingPros}/</span>
                 <span>-{counterUser?.ratingCons}</span>
@@ -47,11 +48,11 @@ export const UserInfo : FC = () => {
             <div><p>Trade status: {currentTrade.paid ? 'PAID': 'NOT PAID'}</p></div>
             <div>
               <p>AMOUNT USD</p>
-              <p>{currentTrade.money}</p>
+              <p>{currentTrade.amount}</p>
             </div>
             <div>
               <p>AMOUNT BTC</p>
-              <p>{(currentTrade.money / Number(bitcoinRate)).toFixed(8) }</p>
+              <p>{(currentTrade.amount / Number(bitcoinRate)).toFixed(8) }</p>
             </div>
           </div>
         </>
