@@ -15,7 +15,6 @@ export const SellBitcoinsPage : FC = () => {
       <Menu />
       <div className="content">
         <Switch>
-          {console.log(`${match.url}/trades`)}
           <Route path={`${match.url}/trades`}>
             <Trades />
             <Messager />

@@ -41,7 +41,7 @@ export const TradeCard: FC<{
       tradeId: currentTrade.id,
       receiverId: currentUser.id
     }));
-  }, [isCurrentTrade]);
+  }, [isCurrentTrade, currentTrade.id, currentUser.id, dispatch]);
 
   return (
     <div className={`trade-card ${isCurrentTrade}`} onClick={handleClick} >

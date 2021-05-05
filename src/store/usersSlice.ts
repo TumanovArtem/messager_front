@@ -1,8 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
-import { IUser } from 'src/interfaces/IUser';
+import { createSlice } from '@reduxjs/toolkit';
 import { IUsersStore } from 'src/interfaces/store';
-import { switchRoles } from './tradesSlice';
 
 const initialState : IUsersStore = {
   data: [

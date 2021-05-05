@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IStoreState } from 'src/interfaces/store';
 import { addMessage } from 'src/store/massagesSlice';
 import { Message } from '../Message';
-import nextId from "react-id-generator";
 import './Messager.style.css';
 import { IUser } from 'src/interfaces/IUser';
 import { DeleteRounded, Person } from '@material-ui/icons';

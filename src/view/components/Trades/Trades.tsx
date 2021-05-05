@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { IStoreState, IUsersStore } from 'src/interfaces/store';
+import { IStoreState } from 'src/interfaces/store';
 import { TradeCard } from '../TradeCard';
 import './Trades.style.css';
 
 export const Trades : FC = () => {
-  const currentUser = useSelector((state : IStoreState) => state.users.currentUser);
   const currentTrade = useSelector((state : IStoreState) => state.trades.currentTrade);
   const trades = useSelector((state: IStoreState) => state.trades.data);
   
