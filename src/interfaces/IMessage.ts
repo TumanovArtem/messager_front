@@ -4,6 +4,6 @@ export interface IMessage {
   senderId: number;
   receiverId: number;
   text: string;
-  date: Date;
+  date: string;
   isRead: boolean;
 };

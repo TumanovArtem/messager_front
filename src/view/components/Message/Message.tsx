@@ -11,7 +11,7 @@ export const Message : FC<{
   return (
     <div className={`message-wrapper ${isFromThisUser && 'this-user'}`}>
       <div className='message'>{message.text}</div>
-      <img className='avatar' src={avatar} alt=""/>
+      <img className='avatar' src={`/${avatar}`} alt=""/>
     </div>
   )
 };

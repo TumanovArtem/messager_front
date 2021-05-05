@@ -10,7 +10,7 @@ const initialState : IMessagesStore = {
       senderId: 0,
       receiverId: 1,
       text: 'Never gonna give you up',
-      date: new Date("2021-05-03"),
+      date: new Date("2021-05-03").toString(),
       isRead: true
     },
     {
@@ -19,7 +19,7 @@ const initialState : IMessagesStore = {
       senderId: 0,
       receiverId: 1,
       text: 'Never gonna let you down',
-      date: new Date("2021-05-03"),
+      date: new Date("2021-05-03").toString(),
       isRead: true
     },
     {
@@ -28,7 +28,7 @@ const initialState : IMessagesStore = {
       senderId: 1,
       receiverId: 0,
       text: 'Never gonna run around',
-      date: new Date("2021-05-03"),
+      date: new Date("2021-05-03").toString(),
       isRead: true
     },
     {
@@ -37,7 +37,7 @@ const initialState : IMessagesStore = {
       senderId: 0,
       receiverId: 1,
       text: 'and desert you',
-      date: new Date("2021-05-03"),
+      date: new Date("2021-05-03").toString(),
       isRead: false
     },
     {
@@ -46,7 +46,7 @@ const initialState : IMessagesStore = {
       senderId: 1,
       receiverId: 0,
       text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-      date: new Date('2021-05-04'),
+      date: new Date('2021-05-04').toString(),
       isRead: true
     },
     {
@@ -55,7 +55,7 @@ const initialState : IMessagesStore = {
       senderId: 0,
       receiverId: 1,
       text: 'Lorem Ipsum has been the industrys standard dummy text',
-      date: new Date('2021-05-04'),
+      date: new Date('2021-05-04').toString(),
       isRead: true
     },
     {
@@ -64,7 +64,7 @@ const initialState : IMessagesStore = {
       senderId: 1,
       receiverId: 0,
       text: 'Lorem Ipsum is simply dummy text',
-      date: new Date('2021-05-04'),
+      date: new Date('2021-05-04').toString(),
       isRead: false
     },
   ]

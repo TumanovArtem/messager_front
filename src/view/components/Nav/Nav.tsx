@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+import { Link } from 'react-router-dom';
 import './Nav.style.css';
 
 export const Nav: FC = () => {
@@ -6,11 +7,11 @@ export const Nav: FC = () => {
     <nav className='nav'>
       <div className='logo'>Logo</div>
       <ul>
-        <li><a>Buy bitcoins</a></li>
-        <li><a>Sell bitcoins</a></li>
-        <li><a>Wallet</a></li>
-        <li><a>Support</a></li>
-        <li><a>Your account</a></li>
+        <li><Link to='/'>Buy bitcoins</Link></li>
+        <li><Link to='/sell-bitcoins'>Sell bitcoins</Link></li>
+        <li><Link to='/'>Wallet</Link></li>
+        <li><Link to='/'>Support</Link></li>
+        <li><Link to='/'>Your account</Link></li>
       </ul>
     </nav>
   );

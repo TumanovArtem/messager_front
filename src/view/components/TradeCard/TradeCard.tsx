@@ -52,7 +52,7 @@ export const TradeCard: FC<{
         <p>{trade.money} USD ({(trade.money / Number(bitcoinRate)).toFixed(8)} BTC)</p>
       </div>
       <div className='payment-status'>
-        <img className='avatar' src={counterUser?.avatar} alt=''/>
+        <img className='avatar' src={`/${counterUser?.avatar}`} alt=''/>
         <p>{trade.paid ? 'PAID' : 'NOT PAID'}</p>
       </div>
     </div>

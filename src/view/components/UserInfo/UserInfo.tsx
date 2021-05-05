@@ -30,7 +30,7 @@ export const UserInfo : FC = () => {
           <button onClick={handleClick}>Release bitcoins</button>
           <div className="table">
             <div>
-              <img src={counterUser?.avatar} alt="" className="avatar"/>
+              <img src={`/${counterUser?.avatar}`} alt="" className="avatar"/>
               <p>
                 <span>+{counterUser?.ratingPros}/</span>
                 <span>-{counterUser?.ratingCons}</span>

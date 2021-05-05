@@ -48,7 +48,7 @@ export const Messager : FC = () => {
       senderId: currentUser.id,
       receiverId: 1,
       text: value,
-      date: new Date,
+      date: new Date().toString(),
       isRead: false
     }));
     setValue('');

@@ -10,10 +10,10 @@ function App() {
   dispatch(fetchBitcoinRate());
   return (
     <div className="App">
-      <Nav />
       <Router>
+        <Nav />
         <Switch>
-          <Route exact path='/sell-bitcoins'>
+          <Route path='/sell-bitcoins'>
             <SellBitcoinsPage />
           </Route>
         </Switch>
