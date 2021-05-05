@@ -15,5 +15,3 @@ export const Message : FC<{
     </div>
   )
 };
-
-export default Message;

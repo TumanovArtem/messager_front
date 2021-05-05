@@ -21,6 +21,7 @@
   order: 2;
   margin-left: 0;
   margin-right: 9%;
+  word-wrap: break-word;
 }
 
 .message-wrapper .avatar {

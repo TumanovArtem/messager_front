@@ -14,6 +14,25 @@
 .trade-card:hover {
   background:rgb(192, 192, 192);
 }
+
+.trade-info {
+  position: relative;
+}
+
+.trade-card .new-messages-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(192, 192, 192);
+  position: absolute;
+  top: 16%;
+  left: 0;
+}
+
+.trade-card .new-messages-indicator.active {
+  background: #79cfc5;
+}
+
 .trade-card .payment-status {
   padding: 20px;
 }

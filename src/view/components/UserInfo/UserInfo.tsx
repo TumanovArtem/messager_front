@@ -15,7 +15,8 @@ export const UserInfo : FC = () => {
       user.id === currentTrade?.buyerId
     )
   );
-  
+  const bitcoinRate = useSelector((state : IStoreState) => state.bitcoinRate.USD);
+
   const handleClick = () => {
     dispatch(executeTransaction());
   };
@@ -50,7 +51,7 @@ export const UserInfo : FC = () => {
             </div>
             <div>
               <p>AMOUNT BTC</p>
-              <p>{currentTrade.money / 10000}</p>
+              <p>{(currentTrade.money / Number(bitcoinRate)).toFixed(8) }</p>
             </div>
           </div>
         </>

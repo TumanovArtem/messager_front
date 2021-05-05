@@ -45,10 +45,11 @@ export const Messager : FC = () => {
     dispatch(addMessage({
       id: messages.length++,
       tradeId: currentTrade.id,
-      fromId: currentUser.id,
-      toId: 1,
+      senderId: currentUser.id,
+      receiverId: 1,
       text: value,
-      date: new Date
+      date: new Date,
+      isRead: false
     }));
     setValue('');
     e.preventDefault();
@@ -74,8 +75,8 @@ export const Messager : FC = () => {
               <Message 
                 key={message.id} 
                 message={message}
-                avatar={currentUser.id === message.fromId ? currentUser.avatar: counterUser?.avatar}
-                isFromThisUser={currentUser.id === message.fromId}
+                avatar={currentUser.id === message.senderId ? currentUser.avatar: counterUser?.avatar}
+                isFromThisUser={currentUser.id === message.senderId}
               />)
             }
             </ul>
@@ -89,5 +90,3 @@ export const Messager : FC = () => {
     </div>
   )
 };
-
-export default Messager;

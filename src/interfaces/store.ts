@@ -1,3 +1,4 @@
+import { IBitcoinRate } from './IBitcoinRate';
 import { IMessage } from './IMessage';
 import { ITrade } from './ITrade';
 import { IUser } from './IUser';
@@ -20,4 +21,5 @@ export interface IStoreState {
   users: IUsersStore;
   trades: ITradesStore;
   messages: IMessagesStore;
+  bitcoinRate: IBitcoinRate;
 }

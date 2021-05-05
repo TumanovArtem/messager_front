@@ -1,10 +1,9 @@
-import { IUser } from "./IUser";
-
 export interface IMessage {
   id: number;
   tradeId: number;
-  fromId: number;
-  toId: number;
+  senderId: number;
+  receiverId: number;
   text: string;
   date: Date;
+  isRead: boolean;
 };

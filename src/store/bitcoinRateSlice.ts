@@ -1,22 +1,32 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { filter, map, switchMap } from 'rxjs/operators';
-import { MyEpic } from './store';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
-  bitcoinRate: 0
+  USD: null
 };
+
+export const fetchBitcoinRate = createAsyncThunk(
+  'bitcoinRate/fetch',
+  async () => {
+    const response = await fetch('https://api.coindesk.com/v1/bpi/currentprice/USD.json');
+    const body = await response.json();
+    return body.bpi.USD.rate_float;
+  }
+);
 
 export const bitcoinRateSlice = createSlice({
   name: 'bitcoinRate',
   initialState,
-  reducers: {
-    fetchBitcoinRate: (state, action: PayloadAction<any>) => {
-      console.log(action.payload)
+  reducers: {},
+  //extraReducers: (builder) => {
+  //  builder.addCase(fetchBitcoinRate.fulfilled, (state, action) => {
+  //    state = action.payload;
+  //  });
+  extraReducers: {
+    [`${fetchBitcoinRate.fulfilled}`]: (state, action) => {
+      state.USD = action.payload;
     }
   }
 });
 
-export const bitcoinRateEpic: MyEpic = action$ =>
-  action$.pipe(
-    map(action => bitcoinRateSlice.actions.fetchBitcoinRate(fetch('https://api.coindesk.com/v1/bpi/currentprice/USD.json')))
-  );
+export default bitcoinRateSlice.reducer;
+

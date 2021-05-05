@@ -7,11 +7,7 @@ import './Trades.style.css';
 export const Trades : FC = () => {
   const currentUser = useSelector((state : IStoreState) => state.users.currentUser);
   const currentTrade = useSelector((state : IStoreState) => state.trades.currentTrade);
-  const trades = useSelector((state: IStoreState) => 
-    state.trades.data.filter(trade => 
-      trade.buyerId === currentUser.id || trade.sellerId === currentUser.id
-    )
-  );
+  const trades = useSelector((state: IStoreState) => state.trades.data);
   
   return (
     <div className="trades">
@@ -19,5 +15,3 @@ export const Trades : FC = () => {
     </div>
   )
 };
-
-export default Trades;
