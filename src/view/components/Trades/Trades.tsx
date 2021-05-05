@@ -13,8 +13,8 @@ export const Trades : FC = () => {
   return (
     <div className="trades">
       {trades.map(trade => (
-        <Link to={`${match.url}/${trade.id}`}>
-          <TradeCard key={trade.id} trade={trade} currentTrade={currentTrade} />
+        <Link to={`${match.url}/${trade.id}`} key={trade.id}>
+          <TradeCard  trade={trade} currentTrade={currentTrade} />
         </Link>
       ))}
     </div>

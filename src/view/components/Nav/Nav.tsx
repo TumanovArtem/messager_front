@@ -5,7 +5,7 @@ import './Nav.style.css';
 export const Nav: FC = () => {
   return (
     <nav className='nav'>
-      <div className='logo'>Logo</div>
+      <div className='logo'>PAXFUL</div>
       <ul>
         <li><Link to='/'>Buy bitcoins</Link></li>
         <li><Link to='/sell-bitcoins'>Sell bitcoins</Link></li>

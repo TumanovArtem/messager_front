@@ -1,5 +1,6 @@
 .trade-card {
-  border: 1px solid rgb(192, 192, 192);
+  border-bottom: 1px solid var(--border-color);
+  background-color: #fff;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -8,11 +9,13 @@
 }
 
 .trade-card.active {
-  background:rgb(226, 226, 226);
+  background: var(--second-color);
 }
 
 .trade-card:hover {
-  background:rgb(192, 192, 192);
+  background: var(--second-color);
+  transform: translateX(50px);
+  box-shadow: 1px 1px 10px -5px var(--first-color);
 }
 
 .trade-info {
