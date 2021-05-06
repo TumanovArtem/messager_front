@@ -45,7 +45,7 @@ const initialState : IMessagesStore = {
       tradeId: 2,
       senderId: 1,
       receiverId: 0,
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry',
       date: new Date('2021-05-04').toString(),
       isRead: true
     },
@@ -93,4 +93,4 @@ export const messagesSlice = createSlice({
 });
 
 export const { addMessage, readMessages } = messagesSlice.actions;
-export default messagesSlice.reducer;
+export const messagesReducer = messagesSlice.reducer;

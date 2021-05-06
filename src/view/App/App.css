@@ -1,6 +1,9 @@
 .App {
   color: var(--first-color);
   font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
@@ -10,4 +13,16 @@ a {
 
 li {
   list-style: none;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.success {
+  color: var(--third-color);
+}
+
+.fail {
+  color: var(--fail-color);
 }

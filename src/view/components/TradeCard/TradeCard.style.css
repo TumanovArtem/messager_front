@@ -6,6 +6,7 @@
   justify-content: space-around;
   cursor: pointer;
   transition: .5s;
+  min-height: 135px;
 }
 
 .trade-card.active {
@@ -26,14 +27,14 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgb(192, 192, 192);
+  background: var(--border-color);
   position: absolute;
   top: 16%;
   left: 0;
 }
 
 .trade-card .new-messages-indicator.active {
-  background: #79cfc5;
+  background: var(--third-color);
 }
 
 .trade-card .payment-status {

@@ -31,7 +31,15 @@
   border: none;
   color: var(--third-color);
   position: absolute;
-  top: 40%;
+  top: 30%;
   right: 2%;
   cursor: pointer;
+  transition: .2s;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.messages-space-wrapper input[type='submit']:hover {
+  border: 1px solid var(--third-color);
 }

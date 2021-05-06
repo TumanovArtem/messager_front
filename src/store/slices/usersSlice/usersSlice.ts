@@ -39,4 +39,4 @@ export const usersSlice = createSlice({
 
 export const { switchUser } = usersSlice.actions;
 
-export default usersSlice.reducer;
+export const usersReducer = usersSlice.reducer;

@@ -2,8 +2,7 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ITrade } from "src/interfaces/ITrade";
 import { IUser } from "src/interfaces/IUser";
-import { IStoreState } from "src/interfaces/store";
-import { addMessage } from "src/store/slices/massagesSlice";
+import { addMessage, getCurrentUserSelector, getMessagesSelector, getUsersSelector } from "src/store/slices";
 import { Message } from "../Message";
 import './MessagesSpace.style.css';
 
@@ -12,15 +11,9 @@ export const MessagesSpace : FC<{
 }> = ({ currentTrade }) => {
   const dispatch = useDispatch();
 
-  const currentUser = useSelector((state: IStoreState) => state.users.currentUser);
-  const messages = useSelector((state : IStoreState) => 
-    state.messages.data.filter(message => message.tradeId === currentTrade?.id)
-  );
-  const counterUser = useSelector((state : IStoreState) => 
-    state.users.data.find((user : IUser) => 
-      user.id === currentTrade?.buyerId
-    )
-  );
+  const currentUser = useSelector(getCurrentUserSelector);
+  const messages = useSelector(getMessagesSelector).filter(message => message.tradeId === currentTrade?.id);
+  const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === currentTrade?.buyerId);
   
   const [value, setValue] = useState('');
   
@@ -29,7 +22,8 @@ export const MessagesSpace : FC<{
   };
 
   const handleSubmit = (e : any) => {
-    dispatch(addMessage({
+    e.preventDefault();
+    value && dispatch(addMessage({
       id: messages.length++,
       tradeId: currentTrade.id,
       senderId: currentUser.id,
@@ -39,7 +33,6 @@ export const MessagesSpace : FC<{
       isRead: false
     }));
     setValue('');
-    e.preventDefault();
   };
 
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
@@ -56,8 +49,7 @@ export const MessagesSpace : FC<{
           <Message 
             key={message.id} 
             message={message}
-            avatar={currentUser.id === message.senderId ? currentUser.avatar: counterUser?.avatar}
-            isFromThisUser={currentUser.id === message.senderId}
+            user={currentUser.id === message.senderId ? currentUser: counterUser}
           />)
         }
         </ul>

@@ -1,11 +1,11 @@
 .messager {
   width: 50%;
-  height: 100%;
   background: var(--second-color);
   display: flex;
   flex-direction: column;
   padding: 0 20px;
   position: relative;
+  padding: 0 2.5%;
 }
 
 .messager .messager-header {
@@ -24,16 +24,21 @@
   position: absolute;
   cursor: pointer;
   top: 35%;
+  transition: .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.messager button:hover {
+  box-shadow: 0 0 5px 5px var(--border-color);
+  transform: traslate(1px 1px);
+  transform: scale(1.05);
+}
+
 .messager .delete-trade {
   left: 2%;
 }
 
 .messager .switch-user {
   right: 2%;
-}
-
-.messages-space {
-  height: 400px;
-  overflow-y: auto;
 }

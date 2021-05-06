@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import usersReducer from 'src/store/slices/usersSlice';
-import tradesReducer from 'src/store/slices/tradesSlice';
-import messagesReducer from 'src/store/slices/massagesSlice';
-import bitcoinRateReducer from 'src/store/slices/bitcoinRateSlice';
+import { usersReducer } from 'src/store/slices';
+import { tradesReducer } from 'src/store/slices';
+import { messagesReducer } from 'src/store/slices';
+import { bitcoinRateReducer } from 'src/store/slices';
 
 const reducer = combineReducers({
   users: usersReducer,

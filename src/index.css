@@ -2,8 +2,9 @@
   box-sizing: border-box;
   --first-color: #1d202d;
   --second-color: #f6f7fb;
-  --third-color: #78d192;
+  --third-color: #1bbc9b;
   --border-color: #e2e2e2;
+  --fail-color: #ec2a2a;
 }
 
 body {

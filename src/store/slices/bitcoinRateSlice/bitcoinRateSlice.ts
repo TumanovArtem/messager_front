@@ -28,5 +28,5 @@ export const bitcoinRateSlice = createSlice({
   }
 });
 
-export default bitcoinRateSlice.reducer;
+export const bitcoinRateReducer = bitcoinRateSlice.reducer;
 

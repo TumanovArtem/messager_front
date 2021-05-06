@@ -84,4 +84,4 @@ export const tradesSlice = createSlice({
 });
 
 export const { changeCurrentTrade, executeTransaction, deleteTrade, switchRoles } = tradesSlice.actions;
-export default tradesSlice.reducer;
+export const tradesReducer = tradesSlice.reducer;

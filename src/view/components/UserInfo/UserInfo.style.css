@@ -1,9 +1,28 @@
 .user-info {
   width: 25%;
-  height: 550px;
   position: relative;
   z-index: 2;
   box-shadow: -1px 4px 9px -7px var(--first-color);
+}
+
+.user-info button {
+  background: var(--third-color);
+  border: none;
+  width: 220px;
+  height: 45px;
+  border-radius: 40px;
+  border: 1px solid #4ea03b;
+  box-shadow: 0 0 5px var(--border-color);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.user-info button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 5px 2px var(--border-color);
 }
 
 .user-info .table {
