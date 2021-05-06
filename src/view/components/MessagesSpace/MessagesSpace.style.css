@@ -1,0 +1,37 @@
+.messages-space {
+  height: 400px;
+  overflow-y: auto;
+}
+
+.messages-space ul {
+  margin: 0;
+  padding: 0;
+}
+
+.messages-space-wrapper form {
+  position: relative;
+  margin-top: 5px;
+}
+
+.messages-space-wrapper input[type='text'] {
+  width: 100%;
+  height: 60px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 70px;
+}
+
+.messages-space-wrapper input[type='text']:focus {
+  outline: none;
+}
+
+.messages-space-wrapper input[type='submit'] {
+  background: transparent;
+  border: none;
+  color: var(--third-color);
+  position: absolute;
+  top: 40%;
+  right: 2%;
+  cursor: pointer;
+}
