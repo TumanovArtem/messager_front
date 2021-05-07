@@ -10,6 +10,7 @@ import {
   getUsersSelector 
 } from 'src/store/slices';
 import './UserInfo.style.css';
+import { NOT_PAID, PAID } from 'src/constants/constants';
 
 export const UserInfo : FC = () => {
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ export const UserInfo : FC = () => {
         </div>
         <div>
           <p>Trade status:</p>
-          <p>{currentTrade.paid ? <span className='success'>PAID</span>: 'NOT PAID'}</p>
+          <p>{currentTrade.paid ? <span className='success'>{PAID}</span>: NOT_PAID}</p>
         </div>
         <div>
           <p>TRADE HASH:</p>

@@ -13,6 +13,7 @@ import './TradeCard.style.css';
 import { IMessage } from 'src/interfaces/IMessage';
 import { readMessages } from 'src/store/slices';
 import { Avatar } from '../Avatar';
+import { NOT_PAID, PAID } from 'src/constants/constants';
 
 export const TradeCard: FC<{
   trade: ITrade;
@@ -51,7 +52,7 @@ export const TradeCard: FC<{
       </div>
       <div className='payment-status'>
         <Avatar src={counterUser?.avatar} login={counterUser?.login} />
-        <p>{trade.paid ? <span className='success'>PAID</span> : 'NOT PAID'}</p>
+        <p>{trade.paid ? <span className='success'>{PAID}</span> : NOT_PAID}</p>
       </div>
     </div>
   )

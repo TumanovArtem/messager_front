@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import { Link } from 'react-router-dom';
+import { HOME_PATH, SELL_BITCOINS_PATH } from 'src/constants/routes';
 import './Nav.style.css';
 
 export const Nav: FC = () => {
@@ -7,11 +8,11 @@ export const Nav: FC = () => {
     <nav className='nav'>
       <div className='logo'>PAXFUL</div>
       <ul>
-        <li><Link to='/'>Buy bitcoins</Link></li>
-        <li><Link to='/sell-bitcoins'>Sell bitcoins</Link></li>
-        <li><Link to='/'>Wallet</Link></li>
-        <li><Link to='/'>Support</Link></li>
-        <li><Link to='/'>Your account</Link></li>
+        <li><Link to={HOME_PATH}>Buy bitcoins</Link></li>
+        <li><Link to={SELL_BITCOINS_PATH}>Sell bitcoins</Link></li>
+        <li><Link to={HOME_PATH}>Wallet</Link></li>
+        <li><Link to={HOME_PATH}>Support</Link></li>
+        <li><Link to={HOME_PATH}>Your account</Link></li>
       </ul>
     </nav>
   );

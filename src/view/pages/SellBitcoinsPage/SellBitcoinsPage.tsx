@@ -8,6 +8,7 @@ import { Route, useRouteMatch } from 'react-router';
 import { Switch } from 'react-router-dom';
 import { IStoreState } from 'src/interfaces/store';
 import { useSelector } from 'react-redux';
+import { NO_OPEN_TRADES } from 'src/constants/constants';
 
 export const SellBitcoinsPage : FC = () => {
   const match = useRouteMatch();
@@ -19,7 +20,7 @@ export const SellBitcoinsPage : FC = () => {
       <div className="content">
         <Switch>
           <Route path={`${match.url}/trades`}>
-            {!trades.length ? <h1 className="no-open-trades">Sorry, there is no open trades</h1> : (
+            {!trades.length ? <h1 className="no-open-trades">{NO_OPEN_TRADES}</h1> : (
               <>
                 <Trades />
                 <Messager />
