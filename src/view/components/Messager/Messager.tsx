@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useCallback} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IUser } from 'src/interfaces/IUser';
 import { DeleteRounded, Person } from '@material-ui/icons';
@@ -15,14 +15,14 @@ export const Messager : FC = () => {
 
   const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === currentTrade?.buyerId);
 
-  const handleDeleteTrade = () => {
+  const handleDeleteTrade = useCallback(() => {
     dispatch(deleteTrade(currentTrade));
-  };
+  }, [currentTrade, dispatch]);
 
-  const handleSwitchUser = () => {
+  const handleSwitchUser = useCallback(() => {
     dispatch(switchRoles());
     dispatch(switchUser());
-  };
+  }, [dispatch]);
 
   return (
     <div className="messager">

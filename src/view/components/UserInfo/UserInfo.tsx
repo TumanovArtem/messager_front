@@ -1,5 +1,5 @@
 import { Avatar } from 'src/view/components/Avatar';
-import React, {FC} from 'react';
+import React, {FC, useCallback} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IUser } from 'src/interfaces/IUser';
 import { 
@@ -20,9 +20,9 @@ export const UserInfo : FC = () => {
   const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === currentTrade?.buyerId);
   const bitcoinRate = useSelector(getBitcoinRateSelector);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     dispatch(executeTransaction());
-  };
+  }, [dispatch]);
 
   return (
     <div className="user-info">

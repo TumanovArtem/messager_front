@@ -1,18 +1,33 @@
-import React, {FC} from 'react';
+import React, {FC, useCallback, useEffect} from 'react';
 import { Menu } from 'src/view/components/Menu';
 import { Messager } from 'src/view/components/Messager';
 import { UserInfo } from 'src/view/components/UserInfo';
 import { Trades } from 'src/view/components/Trades';
 import './SellBitcoinsPage.style.css';
-import { Route, useRouteMatch } from 'react-router';
+import { Route, useLocation, useRouteMatch } from 'react-router';
 import { Switch } from 'react-router-dom';
-import { IStoreState } from 'src/interfaces/store';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NO_OPEN_TRADES } from 'src/constants/constants';
+import { changeCurrentTrade, getCurrentTradeSelector, getTradesSelector } from 'src/store/slices';
+import { ITrade } from 'src/interfaces/ITrade';
 
 export const SellBitcoinsPage : FC = () => {
+  const dispatch = useDispatch();
   const match = useRouteMatch();
-  const trades = useSelector((state : IStoreState) => state.trades.data);
+  const location = useLocation();
+  const trades = useSelector(getTradesSelector);;
+  const currentTrade = useSelector(getCurrentTradeSelector);
+
+  const setCurrentTrade = useCallback(() => {
+    const id = location.pathname.split('/')[3];
+    const currentTradeId = id !== '' ? Number(id) : NaN;
+    const trade = Number.isFinite(currentTradeId) ? trades.find((trade : ITrade) => trade.id === currentTradeId) : null;
+    dispatch(changeCurrentTrade(trade || {} as ITrade));
+  }, [dispatch, location.pathname, trades]);
+
+  useEffect(() => {
+    setCurrentTrade();
+  }, [setCurrentTrade]);
   
   return (
     <div className="bitcoins-page">
@@ -23,8 +38,12 @@ export const SellBitcoinsPage : FC = () => {
             {!trades.length ? <h1 className="no-open-trades">{NO_OPEN_TRADES}</h1> : (
               <>
                 <Trades />
-                <Messager />
-                <UserInfo />
+                {currentTrade.hash && (
+                  <>
+                    <Messager />
+                    <UserInfo />
+                  </>
+                )}
               </>
             )}
           </Route>

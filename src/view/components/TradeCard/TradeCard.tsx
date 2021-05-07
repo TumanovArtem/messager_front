@@ -1,39 +1,39 @@
-import React, { FC, useEffect, useMemo } from 'react';
+import React, { FC, useCallback, useEffect, useMemo } from 'react';
 import { ITrade } from 'src/interfaces/ITrade';
 import { IUser } from 'src/interfaces/IUser';
 import { 
   changeCurrentTrade,
   getBitcoinRateSelector,
+  getCurrentTradeSelector,
   getCurrentUserSelector,
   getMessagesSelector,
   getUsersSelector
 } from 'src/store/slices';
 import { useDispatch, useSelector } from 'react-redux';
-import './TradeCard.style.css';
 import { IMessage } from 'src/interfaces/IMessage';
 import { readMessages } from 'src/store/slices';
 import { Avatar } from '../Avatar';
+import classNames from 'classnames';
 import { NOT_PAID, PAID } from 'src/constants/constants';
+import './TradeCard.style.css';
 
 export const TradeCard: FC<{
   trade: ITrade;
-  currentTrade: ITrade;
-}> = ({trade, currentTrade}) => {
+}> = ({trade}) => {
 
   const dispatch = useDispatch();
   const currentUser = useSelector(getCurrentUserSelector);
-  const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === currentTrade?.buyerId);
+  const currentTrade = useSelector(getCurrentTradeSelector);
+  const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === trade.buyerId);
   const newMessages = useSelector(getMessagesSelector).filter((message : IMessage) =>
-    message.tradeId === trade.id && message.receiverId === currentUser.id && !message.isRead
-  );
-
+    message.tradeId === trade.id && message.receiverId === currentUser.id && !message.isRead);
   const bitcoinRate = useSelector(getBitcoinRateSelector);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     dispatch(changeCurrentTrade(trade));
-  };
-  
-  const isCurrentTrade = useMemo(() => currentTrade.id === trade.id ? 'active': '', [currentTrade, trade]);
+  }, [trade, dispatch]);
+
+  const isCurrentTrade = currentTrade.id === trade.id;
 
   useEffect(() => {
     isCurrentTrade && dispatch(readMessages({
@@ -42,13 +42,17 @@ export const TradeCard: FC<{
     }));
   }, [isCurrentTrade, currentTrade.id, currentUser.id, dispatch]);
 
+  var bitcoins = useMemo(() => 
+    Number((trade.amount / Number(bitcoinRate)).toFixed(8)),
+  [bitcoinRate, trade.amount]);
+
   return (
-    <div className={`trade-card ${isCurrentTrade}`} onClick={handleClick} >
+    <div className={classNames('trade-card', {'active': isCurrentTrade})} onClick={handleClick} >
       <div className='trade-info'>
-        <div className={`new-messages-indicator ${newMessages.length && 'active'}`}></div>
+        <div className={classNames('new-messages-indicator', {'active': newMessages.length})}></div>
         <p>{counterUser?.login} is buying</p>
         <p>{trade.method}</p>
-        <p>{trade.amount} USD ({(trade.amount / Number(bitcoinRate)).toFixed(8)} BTC)</p>
+        <p>{trade.amount} USD {Number.isFinite(bitcoins) && `(${bitcoins} BTC)`}</p>
       </div>
       <div className='payment-status'>
         <Avatar src={counterUser?.avatar} login={counterUser?.login} />

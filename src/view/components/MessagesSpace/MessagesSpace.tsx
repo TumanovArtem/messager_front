@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ITrade } from "src/interfaces/ITrade";
 import { IUser } from "src/interfaces/IUser";
@@ -17,23 +17,23 @@ export const MessagesSpace : FC<{
   
   const [value, setValue] = useState('');
   
-  const handleChange = (e : any) => {
+  const handleChange = useCallback((e : React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-  };
+  }, []);
 
-  const handleSubmit = (e : any) => {
+  const handleSubmit = useCallback((e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     value && dispatch(addMessage({
       id: messages.length++,
       tradeId: currentTrade.id,
       senderId: currentUser.id,
-      receiverId: 1,
+      receiverId: counterUser?.id,
       text: value,
       date: new Date().toString(),
       isRead: false
     }));
     setValue('');
-  };
+  }, [counterUser?.id, currentTrade.id, currentUser.id, dispatch, messages.length, value]);
 
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 

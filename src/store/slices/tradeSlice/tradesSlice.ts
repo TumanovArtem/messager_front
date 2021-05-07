@@ -32,15 +32,7 @@ const initialState : ITradesStore = {
       paid: false
     }
   ],
-  currentTrade: {
-    id: 0,
-    hash: '45aFD3Rr',
-    sellerId: 0,
-    buyerId: 1,
-    method: 'Amazon Gift Card',
-    amount: 77,
-    paid: true
-  }
+  currentTrade: {} as ITrade
 }
 
 export const tradesSlice = createSlice({
