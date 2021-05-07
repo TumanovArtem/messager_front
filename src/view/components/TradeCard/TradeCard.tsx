@@ -30,17 +30,17 @@ export const TradeCard: FC<{
   const bitcoinRate = useSelector(getBitcoinRateSelector);
 
   const handleClick = useCallback(() => {
-    dispatch(changeCurrentTrade(trade));
+    dispatch(changeCurrentTrade(trade.id));
   }, [trade, dispatch]);
 
-  const isCurrentTrade = currentTrade.id === trade.id;
+  const isCurrentTrade = currentTrade?.id === trade.id;
 
   useEffect(() => {
-    isCurrentTrade && dispatch(readMessages({
-      tradeId: currentTrade.id,
-      receiverId: currentUser.id
+    isCurrentTrade && Number.isFinite(currentTrade?.id) && dispatch(readMessages({
+      tradeId: currentTrade?.id,
+      receiverId: currentUser?.id
     }));
-  }, [isCurrentTrade, currentTrade.id, currentUser.id, dispatch]);
+  }, [isCurrentTrade, currentTrade?.id, currentUser?.id, dispatch]);
 
   var bitcoins = useMemo(() => 
     Number((trade.amount / Number(bitcoinRate)).toFixed(8)),

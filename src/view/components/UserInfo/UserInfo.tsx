@@ -44,19 +44,19 @@ export const UserInfo : FC = () => {
         </div>
         <div>
           <p>Trade status:</p>
-          <p>{currentTrade.paid ? <span className='success'>{PAID}</span>: NOT_PAID}</p>
+          <p>{currentTrade?.paid ? <span className='success'>{PAID}</span> : NOT_PAID}</p>
         </div>
         <div>
           <p>TRADE HASH:</p>
-          <p>{currentTrade.hash}</p>
+          <p>{currentTrade?.hash}</p>
         </div>
         <div>
           <p>AMOUNT USD</p>
-          <p>{currentTrade.amount}</p>
+          <p>{currentTrade?.amount}</p>
         </div>
         <div>
           <p>AMOUNT BTC</p>
-          <p>{(currentTrade.amount / Number(bitcoinRate)).toFixed(8) }</p>
+          <p>{((currentTrade?.amount || 0) / Number(bitcoinRate)).toFixed(8) }</p>
         </div>
       </div>
     </div>

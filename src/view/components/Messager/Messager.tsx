@@ -16,7 +16,7 @@ export const Messager : FC = () => {
   const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === currentTrade?.buyerId);
 
   const handleDeleteTrade = useCallback(() => {
-    dispatch(deleteTrade(currentTrade));
+    currentTrade && dispatch(deleteTrade(currentTrade?.id));
   }, [currentTrade, dispatch]);
 
   const handleSwitchUser = useCallback(() => {
@@ -28,7 +28,7 @@ export const Messager : FC = () => {
     <div className="messager">
       <div className="messager-header">
         <IconButton icon={ <DeleteRounded /> } className='delete-trade' handleClick={handleDeleteTrade} />
-        <p className="title">{currentTrade.method}</p>
+        <p className="title">{currentTrade?.method}</p>
         <p>
           <span>{counterUser?.login} </span>
           <span className="success">+{counterUser?.ratingPros}</span>
@@ -37,7 +37,7 @@ export const Messager : FC = () => {
         </p>
         <IconButton icon={ <Person /> } className='switch-user' handleClick={handleSwitchUser} />
       </div>
-      <MessagesSpace currentTrade={currentTrade} />
+      <MessagesSpace currentTrade={currentTrade || null} />
     </div>
   )
 };

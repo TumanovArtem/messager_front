@@ -7,7 +7,7 @@ import { Message } from "../Message";
 import './MessagesSpace.style.css';
 
 export const MessagesSpace : FC<{
-  currentTrade: ITrade
+  currentTrade: ITrade | null
 }> = ({ currentTrade }) => {
   const dispatch = useDispatch();
 
@@ -23,9 +23,9 @@ export const MessagesSpace : FC<{
 
   const handleSubmit = useCallback((e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    value && dispatch(addMessage({
+    value && currentTrade && dispatch(addMessage({
       id: messages.length++,
-      tradeId: currentTrade.id,
+      tradeId: currentTrade?.id,
       senderId: currentUser.id,
       receiverId: counterUser?.id,
       text: value,
@@ -33,7 +33,7 @@ export const MessagesSpace : FC<{
       isRead: false
     }));
     setValue('');
-  }, [counterUser?.id, currentTrade.id, currentUser.id, dispatch, messages.length, value]);
+  }, [counterUser?.id, currentTrade, currentUser.id, dispatch, messages.length, value]);
 
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
@@ -55,7 +55,7 @@ export const MessagesSpace : FC<{
         </ul>
         <div ref={messagesEndRef}></div>
       </div>
-      <form onSubmit={handleSubmit} action={currentTrade.id.toString()}>
+      <form onSubmit={handleSubmit}>
         <input type="text" onChange={handleChange} value={value} placeholder='Type your message...' />
         <input type="submit" value="SEND" />
       </form>

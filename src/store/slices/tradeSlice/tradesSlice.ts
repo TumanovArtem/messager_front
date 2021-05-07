@@ -32,7 +32,7 @@ const initialState : ITradesStore = {
       paid: false
     }
   ],
-  currentTrade: {} as ITrade
+  currentTrade: null
 }
 
 export const tradesSlice = createSlice({
@@ -43,19 +43,18 @@ export const tradesSlice = createSlice({
       state.data.push(action.payload);
     },
     executeTransaction: (state) => {
-      state.currentTrade.paid = true;
-      const trade = state.data.find((trade : ITrade) => trade.id === state.currentTrade.id);
+      const trade = state.data.find((trade : ITrade) => trade.id === state.currentTrade);
       trade && (trade.paid = true);
     },
-    changeCurrentTrade: (state, action: PayloadAction<ITrade>) => {
+    changeCurrentTrade: (state, action: PayloadAction<number | null>) => {
       state.currentTrade = action.payload;
     },
-    deleteTrade: (state, action: PayloadAction<ITrade>) => {
-      const newData = state.data.filter((trade : ITrade) => trade.id !== action.payload.id);
+    deleteTrade: (state, action: PayloadAction<number>) => {
+      const newData = state.data.filter((trade : ITrade) => trade.id !== action.payload);
       return {
         ...state,
         data: newData,
-        currentTrade: newData[0]
+        currentTrade: null
       }
     },
     switchRoles: (state) => {
@@ -69,7 +68,7 @@ export const tradesSlice = createSlice({
         }
         return newTrade;
       });
-      const currentTrade : any = data.find((trade : ITrade) => trade.id === state.currentTrade.id);
+      const currentTrade : any = data.find((trade : ITrade) => trade.id === state.currentTrade);
       return {...state, data, currentTrade };
     }
   }
