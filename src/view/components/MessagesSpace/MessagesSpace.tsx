@@ -41,6 +41,8 @@ export const MessagesSpace : FC<{
     messagesEndRef.current?.scrollIntoView();
   });
 
+  useEffect(() => setValue(''), [currentTrade]);
+  
   return (
     <div className="messages-space-wrapper">
       <div className="messages-space">

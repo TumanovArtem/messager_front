@@ -6,4 +6,5 @@ export interface ITrade {
   method: string;
   amount: number;
   paid: boolean;
+  date: string;
 }

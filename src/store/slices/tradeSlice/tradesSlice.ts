@@ -11,7 +11,8 @@ const initialState : ITradesStore = {
       buyerId: 1,
       method: 'Amazon Gift Card',
       amount: 77,
-      paid: true
+      paid: true,
+      date: "2021-05-04T11:55:50.417"
     },
     {
       id: 1,
@@ -20,7 +21,8 @@ const initialState : ITradesStore = {
       buyerId: 1,
       method: 'iTunes Gift Card',
       amount: 30,
-      paid: false
+      paid: false,
+      date: "2021-05-04T11:55:50.417"
     },
     {
       id: 2,
@@ -29,7 +31,8 @@ const initialState : ITradesStore = {
       buyerId: 1,
       method: 'PayPal',
       amount: 500,
-      paid: false
+      paid: false,
+      date: "2021-05-04T11:55:50.417"
     }
   ],
   currentTrade: null

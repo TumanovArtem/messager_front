@@ -1,9 +1,10 @@
 .message-wrapper {
   display: flex;
   flex-direction: row;
-  margin: 20px 0;
+  margin-bottom: 35px;
   width: 100%;
   justify-content: flex-end;
+  position: relative;
 }
 
 .message {
@@ -63,4 +64,17 @@
 
 .message-wrapper.this-user .avatar {
   order: 1;
+}
+
+.message-wrapper .time {
+  font-size: 12px;
+  color: grey;
+  position: absolute;
+  top: 110%;
+  right: 10%;
+}
+
+.message-wrapper.this-user .time {
+  left: 10%;
+  right: initial;
 }

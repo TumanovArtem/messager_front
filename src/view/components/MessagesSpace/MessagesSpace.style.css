@@ -1,6 +1,7 @@
 .messages-space {
   height: 400px;
   overflow-y: auto;
+  padding-top: 20px;
 }
 
 .messages-space ul {

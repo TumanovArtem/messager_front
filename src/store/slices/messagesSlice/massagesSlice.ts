@@ -10,7 +10,7 @@ const initialState : IMessagesStore = {
       senderId: 0,
       receiverId: 1,
       text: 'Never gonna give you up',
-      date: new Date("2021-05-03").toString(),
+      date: new Date("2021-05-04T11:51:50.417").toString(),
       isRead: true
     },
     {
@@ -19,7 +19,7 @@ const initialState : IMessagesStore = {
       senderId: 0,
       receiverId: 1,
       text: 'Never gonna let you down',
-      date: new Date("2021-05-03").toString(),
+      date: new Date("2021-05-04T11:55:50.417").toString(),
       isRead: true
     },
     {
@@ -28,7 +28,7 @@ const initialState : IMessagesStore = {
       senderId: 1,
       receiverId: 0,
       text: 'Never gonna run around',
-      date: new Date("2021-05-03").toString(),
+      date: new Date("2021-05-04T12:51:50.417").toString(),
       isRead: true
     },
     {
@@ -37,7 +37,7 @@ const initialState : IMessagesStore = {
       senderId: 0,
       receiverId: 1,
       text: 'and desert you',
-      date: new Date("2021-05-03").toString(),
+      date: new Date("2021-05-04T13:51:50.417").toString(),
       isRead: false
     },
     {
