@@ -27,7 +27,7 @@ export const UserInfo : FC = () => {
   return (
     <div className="user-info">
       <p className="title">You are trading with <b>{counterUser?.login}</b></p>
-      <p>Started 23 minutes ago</p>
+      <p className="time">Started 23 minutes ago</p>
       <button onClick={handleClick}>Release bitcoins</button>
       <div className="table">
         <div>
@@ -39,24 +39,24 @@ export const UserInfo : FC = () => {
           </p>
         </div>
         <div>
-          <p># OF TRADES</p>
+          <p className="table-title"># OF TRADES</p>
           <p>{trades.length}</p>
         </div>
         <div>
-          <p>Trade status:</p>
+          <p className="table-title">Trade status:</p>
           <p>{currentTrade?.paid ? <span className='success'>{PAID}</span> : NOT_PAID}</p>
         </div>
         <div>
-          <p>TRADE HASH:</p>
+          <p className="table-title">TRADE HASH:</p>
           <p>{currentTrade?.hash}</p>
         </div>
         <div>
-          <p>AMOUNT USD</p>
-          <p>{currentTrade?.amount}</p>
+          <p className="table-title">AMOUNT USD</p>
+          <p>{currentTrade?.amount.toFixed(2)}</p>
         </div>
         <div>
-          <p>AMOUNT BTC</p>
-          <p>{((currentTrade?.amount || 0) / Number(bitcoinRate)).toFixed(8) }</p>
+          <p className="table-title">AMOUNT BTC</p>
+          <p>{bitcoinRate && ((currentTrade?.amount || 0) / Number(bitcoinRate)).toFixed(8) }</p>
         </div>
       </div>
     </div>

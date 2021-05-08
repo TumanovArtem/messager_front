@@ -7,9 +7,12 @@ import { switchUser } from 'src/store/slices';
 import { MessagesSpace } from '../MessagesSpace';
 import './Messager.style.css';
 import { IconButton } from '../IconButton';
+import { useHistory } from 'react-router';
+import { SELL_BITCOINS_PATH, TRADES_PATH } from 'src/constants/routes';
 
 export const Messager : FC = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const currentTrade = useSelector(getCurrentTradeSelector);
 
@@ -17,7 +20,8 @@ export const Messager : FC = () => {
 
   const handleDeleteTrade = useCallback(() => {
     currentTrade && dispatch(deleteTrade(currentTrade?.id));
-  }, [currentTrade, dispatch]);
+    history.push(`${SELL_BITCOINS_PATH}${TRADES_PATH}`);
+  }, [currentTrade, dispatch, history]);
 
   const handleSwitchUser = useCallback(() => {
     dispatch(switchRoles());

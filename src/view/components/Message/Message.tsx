@@ -21,7 +21,8 @@ export const Message : FC<{
     const hoursReduced = isPM ?
       (hours === 12 ? hours : hours - 12)
       : hours;
-    return isPM ? `${hoursReduced}:${minutes} pm` : `${hoursReduced}:${minutes} am`;
+      const minutesReduced = minutes < 10 ? `0${minutes}` : minutes;
+    return isPM ? `${hoursReduced}:${minutesReduced} pm` : `${hoursReduced}:${minutesReduced} am`;
   }, [message]);
 
   return (

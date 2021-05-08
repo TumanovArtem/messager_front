@@ -5,6 +5,15 @@
   box-shadow: -1px 4px 9px -7px var(--first-color);
 }
 
+.user-info .title {
+  margin-bottom: 0;
+}
+
+.user-info .time {
+  margin: 5px 0 25px 0;
+  color: grey;
+}
+
 .user-info button {
   background: var(--third-color);
   border: none;
@@ -31,16 +40,30 @@
   flex-wrap: wrap;
   width: 70%;
   margin: 40px auto;
+  color: grey;
 }
 
 .user-info .table div{
   border: 1px solid rgb(192, 192, 192);
   width: 50%;
-  height: 100px; 
   border-top: none;
   border-left: none;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-info .table div:nth-child(2n) {
   border-right: none;
+}
+
+.user-info .table-title {
+  font-weight: bold;  
+  color: var(--first-color);
+}
+
+.user-info .table p {
+  margin: 5px 0;
 }

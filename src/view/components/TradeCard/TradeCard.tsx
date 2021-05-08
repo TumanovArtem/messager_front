@@ -43,16 +43,19 @@ export const TradeCard: FC<{
   }, [isCurrentTrade, currentTrade?.id, currentUser?.id, dispatch]);
 
   var bitcoins = useMemo(() => 
-    Number((trade.amount / Number(bitcoinRate)).toFixed(8)),
-  [bitcoinRate, trade.amount]);
+    (trade.amount / Number(bitcoinRate)).toFixed(8),
+    [bitcoinRate, trade.amount]
+  );
 
   return (
     <div className={classNames('trade-card', {'active': isCurrentTrade})} onClick={handleClick} >
+      <div className={classNames('new-messages-indicator', {'active': newMessages.length})}></div>
       <div className='trade-info'>
-        <div className={classNames('new-messages-indicator', {'active': newMessages.length})}></div>
         <p>{counterUser?.login} is buying</p>
-        <p>{trade.method}</p>
-        <p>{trade.amount} USD {Number.isFinite(bitcoins) && `(${bitcoins} BTC)`}</p>
+        <div className='trade-method'>
+          <p><b>{trade.method}</b></p>
+          <p>{trade.amount} USD {bitcoinRate && `(${bitcoins} BTC)`}</p>
+        </div>
       </div>
       <div className='payment-status'>
         <Avatar src={counterUser?.avatar} login={counterUser?.login} />

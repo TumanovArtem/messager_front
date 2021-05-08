@@ -3,10 +3,12 @@
   background-color: #fff;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   cursor: pointer;
   transition: .5s;
   min-height: 135px;
+  text-align: left;
+  position: relative;
+  padding: 10px 10% 10px 15%;
 }
 
 .trade-card.active {
@@ -20,7 +22,7 @@
 }
 
 .trade-info {
-  position: relative;
+  width: 70%;
 }
 
 .trade-card .new-messages-indicator {
@@ -29,14 +31,26 @@
   border-radius: 50%;
   background: var(--border-color);
   position: absolute;
-  top: 16%;
-  left: 0;
+  top: 32px;
+  left: 9%;
 }
 
 .trade-card .new-messages-indicator.active {
   background: var(--third-color);
 }
 
+.trade-card .trade-method p {
+  margin: 3px 0;
+}
 .trade-card .payment-status {
-  padding: 20px;
+  width: 30%;
+  padding: 15px 0;
+  text-align: center;
+  font-weight: bold;
+  color: grey;
+  font-size: 13px;
+}
+
+.trade-card .payment-status p {
+  margin: 12px;
 }
