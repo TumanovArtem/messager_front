@@ -5,7 +5,7 @@ import { IUser } from './IUser';
 
 export interface IUsersStore {
   data: IUser[];
-  currentUser: IUser;
+  currentUser: number;
 }
 
 export interface ITradesStore {

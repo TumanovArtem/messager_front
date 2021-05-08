@@ -18,13 +18,7 @@ const initialState : IUsersStore = {
       ratingCons: 2
     },
   ],
-  currentUser: {
-    id: 0,
-    login: 'Batman',
-    avatar: 'static/img/buyer.png',
-    ratingPros: 37,
-    ratingCons: 1
-  },
+  currentUser: 0
 };
 
 export const usersSlice = createSlice({
@@ -32,7 +26,7 @@ export const usersSlice = createSlice({
   initialState,
   reducers: {
     switchUser: (state) => {
-      state.currentUser = state.currentUser.id === 0 ? state.data[1] : state.data[0];
+      state.currentUser = state.currentUser === 0 ? 1 : 0;
     }
   } 
 });
