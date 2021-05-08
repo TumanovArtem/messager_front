@@ -51,10 +51,10 @@ export const TradeCard: FC<{
     <div className={classNames('trade-card', {'active': isCurrentTrade})} onClick={handleClick} >
       <div className={classNames('new-messages-indicator', {'active': newMessages.length})}></div>
       <div className='trade-info'>
-        <p>{counterUser?.login} is buying</p>
+        <p className='login'>{counterUser?.login} <b>is buying</b></p>
         <div className='trade-method'>
-          <p><b>{trade.method}</b></p>
-          <p>{trade.amount} USD {bitcoinRate && `(${bitcoins} BTC)`}</p>
+          <p>{trade.method}</p>
+          <p className="amount">{trade.amount} USD {bitcoinRate && `(${bitcoins} BTC)`}</p>
         </div>
       </div>
       <div className='payment-status'>

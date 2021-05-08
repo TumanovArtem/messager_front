@@ -1,23 +1,20 @@
 .trade-card {
   border-bottom: 1px solid var(--border-color);
+  color: grey;
   background-color: #fff;
   display: flex;
   flex-direction: row;
   cursor: pointer;
-  transition: .5s;
+  transition: .3s;
   min-height: 135px;
   text-align: left;
   position: relative;
   padding: 10px 10% 10px 15%;
 }
 
-.trade-card.active {
+.trade-card.active, .trade-card:hover {
   background: var(--second-color);
-}
-
-.trade-card:hover {
-  background: var(--second-color);
-  transform: translateX(50px);
+  transform: translateX(15px);
   box-shadow: 1px 1px 10px -5px var(--first-color);
 }
 
@@ -39,9 +36,18 @@
   background: var(--third-color);
 }
 
-.trade-card .trade-method p {
-  margin: 3px 0;
+.trade-card .trade-method p:first-child {
+  color: var(--first-color);
 }
+
+.trade-card .trade-method p {
+  margin: 0;
+}
+
+.trade-method p:first-child {
+  font-weight: bold;
+}
+
 .trade-card .payment-status {
   width: 30%;
   padding: 15px 0;

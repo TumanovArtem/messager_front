@@ -15,8 +15,12 @@
   transition: .5s;
 }
 
+.menu .active-route {
+  background: var(--second-color);
+}
+
 .menu ul li:hover {
-  background: rgb(192, 192, 192);
+  background: var(--second-color);
 }
 
 .menu a {

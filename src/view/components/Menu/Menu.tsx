@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import { useRouteMatch } from 'react-router';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { 
   DISPUTES_PATH,
   MY_TEAM_PATH, 
@@ -17,12 +17,12 @@ export const Menu: FC = () => {
   return (
     <nav className='menu'>
       <ul>
-        <li><Link to={`${match.url}${OVERVIEW_PATH}`}>Overview</Link></li>
-        <li><Link to={`${match.url}${TRADES_PATH}`}>Trades</Link></li>
-        <li><Link to={`${match.url}${DISPUTES_PATH}`}>Disputes</Link></li>
-        <li><Link to={`${match.url}${YOUR_OFFERS_PATH}`}>Your offers</Link></li>
-        <li><Link to={`${match.url}${MY_TEAM_PATH}`}>My team</Link></li>
-        <li><Link to={`${match.url}${TRADE_HISTORY_PATH}`}>Trade history</Link></li>
+        <li><NavLink activeClassName="active-route" to={`${match.url}${OVERVIEW_PATH}`}>Overview</NavLink></li>
+        <li><NavLink activeClassName="active-route" to={`${match.url}${TRADES_PATH}`}>Trades</NavLink></li>
+        <li><NavLink activeClassName="active-route" to={`${match.url}${DISPUTES_PATH}`}>Disputes</NavLink></li>
+        <li><NavLink activeClassName="active-route" to={`${match.url}${YOUR_OFFERS_PATH}`}>Your offers</NavLink></li>
+        <li><NavLink activeClassName="active-route" to={`${match.url}${MY_TEAM_PATH}`}>My team</NavLink></li>
+        <li><NavLink activeClassName="active-route" to={`${match.url}${TRADE_HISTORY_PATH}`}>Trade history</NavLink></li>
       </ul>
     </nav>
   );

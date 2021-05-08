@@ -12,7 +12,7 @@ const initialState : IUsersStore = {
     },
     {
       id: 1,
-      login: 'Chanaaar',
+      login: 'Iron Man',
       avatar: 'static/img/seller.png',
       ratingPros: 20,
       ratingCons: 2
