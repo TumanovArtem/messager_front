@@ -26,26 +26,26 @@ export const TradeCard: FC<{
   const currentTrade = useSelector(getCurrentTradeSelector);
   const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === trade.buyerId);
   const newMessages = useSelector(getMessagesSelector).filter((message : IMessage) =>
-    message.tradeId === trade.id && message.receiverId === currentUser.id && !message.isRead);
+    message.tradeHash === trade.hash && message.receiverId === currentUser.id && !message.isRead);
   const bitcoinRate = useSelector(getBitcoinRateSelector);
 
   const handleClick = useCallback(() => {
-    dispatch(changeCurrentTrade(trade.id));
+    dispatch(changeCurrentTrade(trade.hash));
   }, [trade, dispatch]);
 
   const isCurrentTrade = currentTrade?.id === trade.id;
 
   useEffect(() => {
-    isCurrentTrade && Number.isFinite(currentTrade?.id) && dispatch(readMessages({
-      tradeId: currentTrade?.id,
+    dispatch(readMessages({
+      tradeHash: currentTrade?.hash,
       receiverId: currentUser?.id
     }));
-  }, [isCurrentTrade, currentTrade?.id, currentUser?.id, dispatch]);
+  }, [isCurrentTrade, currentTrade?.hash, currentUser?.id, dispatch]);
 
   var bitcoins = useMemo(() => 
     (trade.amount / Number(bitcoinRate)).toFixed(8),
     [bitcoinRate, trade.amount]
-  );
+);
 
   return (
     <div className={classNames('trade-card', {'active': isCurrentTrade})} onClick={handleClick} >

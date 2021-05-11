@@ -6,52 +6,52 @@ const initialState : IMessagesStore = {
   data: [
     {
       id: 0,
-      tradeId: 0,
+      tradeHash: 'a',
       senderId: 0,
       receiverId: 1,
       text: 'Never gonna give you up',
-      date: new Date("2021-05-04T11:51:50.417").toString(),
+      date: "2021-05-04T11:55:50.417",
       isRead: true
     },
     {
       id: 1,
-      tradeId: 0,
+      tradeHash: 'a',
       senderId: 0,
       receiverId: 1,
       text: 'Never gonna let you down',
-      date: new Date("2021-05-04T11:55:50.417").toString(),
+      date: "2021-05-04T11:55:50.417",
       isRead: true
     },
     {
       id: 2,
-      tradeId: 0,
+      tradeHash: 'a',
       senderId: 1,
       receiverId: 0,
       text: 'Never gonna run around',
-      date: new Date("2021-05-04T12:51:50.417").toString(),
+      date: "2021-05-04T11:55:50.417",
       isRead: true
     },
     {
       id: 3,
-      tradeId: 0,
+      tradeHash: 'a',
       senderId: 0,
       receiverId: 1,
       text: 'and desert you',
-      date: new Date("2021-05-04T13:51:50.417").toString(),
+      date: "2021-05-04T11:55:50.417",
       isRead: false
     },
     {
       id: 4,
-      tradeId: 2,
+      tradeHash: 'abc',
       senderId: 1,
       receiverId: 0,
       text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-      date: new Date('2021-05-04').toString(),
+      date: "2021-05-04T11:55:50.417",
       isRead: true
     },
     {
       id: 5,
-      tradeId: 2,
+      tradeHash: 'abc',
       senderId: 0,
       receiverId: 1,
       text: 'Lorem Ipsum has been the industrys standard dummy text',
@@ -60,7 +60,7 @@ const initialState : IMessagesStore = {
     },
     {
       id: 6,
-      tradeId: 2,
+      tradeHash: 'abc',
       senderId: 1,
       receiverId: 0,
       text: 'Lorem Ipsum is simply dummy text',
@@ -71,7 +71,7 @@ const initialState : IMessagesStore = {
 };
 
 type ReadProps = {
-  tradeId: number | undefined;
+  tradeHash?: string;
   receiverId: number;
 };
 
@@ -85,7 +85,7 @@ export const messagesSlice = createSlice({
     readMessages: (state, action: PayloadAction<ReadProps>) => {
       state.data
         .filter((message : IMessage) => 
-          message.tradeId === action.payload.tradeId 
+          message.tradeHash === action.payload.tradeHash 
           && message.receiverId === action.payload.receiverId)
         .map(message => message.isRead = true)
     }

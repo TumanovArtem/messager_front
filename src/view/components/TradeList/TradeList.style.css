@@ -1,0 +1,6 @@
+.trades {
+  width: 25%;
+  box-shadow: 1px 1px 10px -7px var(--first-color);
+  position: relative;
+  z-index: 2;
+}

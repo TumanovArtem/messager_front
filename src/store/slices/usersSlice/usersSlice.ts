@@ -6,14 +6,14 @@ const initialState : IUsersStore = {
     {
       id: 0,
       login: 'Batman',
-      avatar: 'static/img/buyer.png',
+      avatar: '/static/img/buyer.png',
       ratingPros: 37,
       ratingCons: 1
     },
     {
       id: 1,
       login: 'Iron Man',
-      avatar: 'static/img/seller.png',
+      avatar: '/static/img/seller.png',
       ratingPros: 20,
       ratingCons: 2
     },

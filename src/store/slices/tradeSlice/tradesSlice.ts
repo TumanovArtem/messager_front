@@ -6,7 +6,7 @@ const initialState : ITradesStore = {
   data: [
     {
       id: 0,
-      hash: '45aFD3Rr',
+      hash: 'a',
       sellerId: 0,
       buyerId: 1,
       method: 'Amazon Gift Card',
@@ -16,7 +16,7 @@ const initialState : ITradesStore = {
     },
     {
       id: 1,
-      hash: 'dSDs43g',
+      hash: 'ab',
       sellerId: 0,
       buyerId: 1,
       method: 'iTunes Gift Card',
@@ -26,7 +26,7 @@ const initialState : ITradesStore = {
     },
     {
       id: 2,
-      hash: 'fdsf32',
+      hash: 'abc',
       sellerId: 0,
       buyerId: 1,
       method: 'PayPal',
@@ -46,10 +46,10 @@ export const tradesSlice = createSlice({
       state.data.push(action.payload);
     },
     executeTransaction: (state) => {
-      const trade = state.data.find((trade : ITrade) => trade.id === state.currentTrade);
+      const trade = state.data.find((trade : ITrade) => trade.hash === state.currentTrade);
       trade && (trade.paid = true);
     },
-    changeCurrentTrade: (state, action: PayloadAction<number | null>) => {
+    changeCurrentTrade: (state, action: PayloadAction<string | null>) => {
       state.currentTrade = action.payload;
     },
     deleteTrade: (state, action: PayloadAction<number>) => {
@@ -71,7 +71,7 @@ export const tradesSlice = createSlice({
         }
         return newTrade;
       });
-      const currentTrade : any = data.find((trade : ITrade) => trade.id === state.currentTrade);
+      const currentTrade : any = data.find((trade : ITrade) => trade.hash === state.currentTrade);
       return {...state, data, currentTrade };
     }
   }

@@ -8,7 +8,7 @@ import './Message.style.css';
 
 export const Message : FC<{
   message: IMessage,
-  user: IUser | undefined
+  user?: IUser
 }> = ({ message, user }) => {
   const currentUser = useSelector(getCurrentUserSelector);
   const isFromThisUser = currentUser === user;

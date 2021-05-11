@@ -12,7 +12,7 @@ export const MessagesSpace : FC<{
   const dispatch = useDispatch();
 
   const currentUser = useSelector(getCurrentUserSelector);
-  const messages = useSelector(getMessagesSelector).filter(message => message.tradeId === currentTrade?.id);
+  const messages = useSelector(getMessagesSelector).filter(message => message.tradeHash === currentTrade?.hash);
   const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === currentTrade?.buyerId);
   
   const [value, setValue] = useState('');
@@ -25,7 +25,7 @@ export const MessagesSpace : FC<{
     e.preventDefault();
     value && currentTrade && dispatch(addMessage({
       id: messages.length++,
-      tradeId: currentTrade?.id,
+      tradeHash: currentTrade?.hash,
       senderId: currentUser.id,
       receiverId: counterUser?.id,
       text: value,

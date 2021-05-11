@@ -14,7 +14,7 @@
 
 .trade-card.active, .trade-card:hover {
   background: var(--second-color);
-  transform: translateX(15px);
+  transform: translateX(10px);
   box-shadow: 1px 1px 10px -5px var(--first-color);
 }
 

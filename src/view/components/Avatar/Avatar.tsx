@@ -2,8 +2,8 @@ import React, {FC} from 'react';
 import './Avatar.style.css';
 
 export const Avatar : FC<{
-  src: string | undefined;
-  login?: string | undefined;
+  src?: string;
+  login?: string;
 }> = ({ src, login }) => {
-  return <img className='avatar' src={`/${src}`} alt={login} />
+  return <img className='avatar' src={src} alt={login} />
 };

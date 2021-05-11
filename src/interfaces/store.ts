@@ -10,7 +10,7 @@ export interface IUsersStore {
 
 export interface ITradesStore {
   data: ITrade[];
-  currentTrade: number | null;
+  currentTrade: string | null;
 }
 
 export interface IMessagesStore {
