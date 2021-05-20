@@ -17,10 +17,6 @@ export const bitcoinRateSlice = createSlice({
   name: 'bitcoinRate',
   initialState,
   reducers: {},
-  //extraReducers: (builder) => {
-  //  builder.addCase(fetchBitcoinRate.fulfilled, (state, action) => {
-  //    state = action.payload;
-  //  });
   extraReducers: {
     [`${fetchBitcoinRate.fulfilled}`]: (state, action) => {
       state.USD = action.payload;

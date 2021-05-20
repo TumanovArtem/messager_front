@@ -2,7 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "commonjs",
+    "module": "esnext",
     "target": "ES5",
     "jsx": "react-jsx",
     "strict": true,

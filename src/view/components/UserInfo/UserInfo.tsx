@@ -17,7 +17,7 @@ export const UserInfo : FC = () => {
 
   const trades = useSelector(getTradesSelector);
   const currentTrade = useSelector(getCurrentTradeSelector);
-  const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === currentTrade?.buyerId);
+  const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === currentTrade?.buyerId)!;
   const bitcoinRate = useSelector(getBitcoinRateSelector);
 
   const handleClick = useCallback(() => {
@@ -31,11 +31,11 @@ export const UserInfo : FC = () => {
       <button onClick={handleClick}>Release bitcoins</button>
       <div className="table">
         <div>
-          <Avatar src={counterUser?.avatar} login={counterUser?.login}/>
+          <Avatar src={counterUser.avatar} login={counterUser.login}/>
           <p>
-            <span className="success">+{counterUser?.ratingPros}</span>
+            <span className="success">+{counterUser.ratingPros}</span>
             <span> / </span>
-            <span className="fail">-{counterUser?.ratingCons}</span>
+            <span className="fail">-{counterUser.ratingCons}</span>
           </p>
         </div>
         <div>

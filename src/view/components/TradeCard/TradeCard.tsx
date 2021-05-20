@@ -23,7 +23,7 @@ export const TradeCard: FC<{
 
   const dispatch = useDispatch();
   const currentUser = useSelector(getCurrentUserSelector)!;
-  const currentTrade = useSelector(getCurrentTradeSelector);
+  const currentTrade = useSelector(getCurrentTradeSelector)!;
   const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === trade.buyerId)!;
   const newMessages = useSelector(getMessagesSelector).filter((message : IMessage) =>
     message.tradeHash === trade.hash && message.receiverId === currentUser.id && !message.isRead);

@@ -71,7 +71,7 @@ const initialState : IMessagesStore = {
 };
 
 type ReadProps = {
-  tradeHash?: string;
+  tradeHash: string;
   receiverId: number;
 };
 

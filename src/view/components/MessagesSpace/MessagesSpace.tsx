@@ -13,12 +13,12 @@ export const MessagesSpace : FC<{
 
   const currentUser = useSelector(getCurrentUserSelector);
   const messages = useSelector(getMessagesSelector).filter(message => message.tradeHash === currentTrade?.hash);
-  const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === currentTrade?.buyerId);
+  const counterUser = useSelector(getUsersSelector).find(({ id } : IUser) => id === currentTrade?.buyerId)!;
   
   const [value, setValue] = useState('');
   
   const handleChange = useCallback((e : React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setValue(e.target.value.trim());
   }, []);
 
   const handleSubmit = useCallback((e : React.FormEvent<HTMLFormElement>) => {

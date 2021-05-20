@@ -8,7 +8,7 @@ import './Message.style.css';
 
 export const Message : FC<{
   message: IMessage,
-  user?: IUser
+  user: IUser
 }> = ({ message, user }) => {
   const currentUser = useSelector(getCurrentUserSelector);
   const isFromThisUser = currentUser === user;
@@ -28,7 +28,7 @@ export const Message : FC<{
   return (
     <div className={`message-wrapper ${isFromThisUser && 'this-user'}`}>
       <div className='message'>{message.text}</div>
-      <Avatar src={user?.avatar} login={user?.login}/>
+      <Avatar src={user.avatar} login={user.login}/>
       <div className="time">{time}</div>
     </div>
   )
