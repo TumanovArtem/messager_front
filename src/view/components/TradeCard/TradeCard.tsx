@@ -22,9 +22,9 @@ export const TradeCard: FC<{
 }> = ({trade}) => {
 
   const dispatch = useDispatch();
-  const currentUser = useSelector(getCurrentUserSelector);
+  const currentUser = useSelector(getCurrentUserSelector)!;
   const currentTrade = useSelector(getCurrentTradeSelector);
-  const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === trade.buyerId);
+  const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === trade.buyerId)!;
   const newMessages = useSelector(getMessagesSelector).filter((message : IMessage) =>
     message.tradeHash === trade.hash && message.receiverId === currentUser.id && !message.isRead);
   const bitcoinRate = useSelector(getBitcoinRateSelector);
@@ -40,7 +40,7 @@ export const TradeCard: FC<{
       tradeHash: currentTrade?.hash,
       receiverId: currentUser?.id
     }));
-  }, [isCurrentTrade, currentTrade?.hash, currentUser?.id, dispatch]);
+  }, [isCurrentTrade, currentTrade?.hash, currentUser.id, dispatch]);
 
   var bitcoins = useMemo(() => 
     (trade.amount / Number(bitcoinRate)).toFixed(8),
@@ -51,7 +51,7 @@ export const TradeCard: FC<{
     <div className={classNames('trade-card', {'active': isCurrentTrade})} onClick={handleClick} >
       <div className={classNames('new-messages-indicator', {'active': newMessages.length})}></div>
       <div className='trade-info'>
-        <p className='login'>{counterUser?.login} <b>is buying</b></p>
+        <p className='login'>{counterUser.login} <b>is buying</b></p>
         <div className='trade-method'>
           <p>{trade.method}</p>
           <p className="amount">{trade.amount} USD {bitcoinRate && `(${bitcoins} BTC)`}</p>

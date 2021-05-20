@@ -2,8 +2,8 @@
   "compilerOptions": {
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "esnext",
-    "target": "ES2019",
+    "module": "commonjs",
+    "target": "ES5",
     "jsx": "react-jsx",
     "strict": true,
     "resolveJsonModule": true,
@@ -12,8 +12,7 @@
     "baseUrl": ".",
     "lib": [
       "dom",
-      "dom.iterable",
-      "esnext"
+      "dom.iterable"
     ],
     "allowJs": true,
     "skipLibCheck": true,
