@@ -5,13 +5,13 @@ import { Switch } from 'react-router-dom';
 import './SellBitcoinsPage.style.css';
 import { Trades } from 'src/view/components/Trades';
 
-export const SellBitcoinsPage : FC = () => {
+export const SellBitcoinsPage: FC = () => {
   const match = useRouteMatch();
 
   return (
-    <div className="bitcoins-page">
+    <div className='bitcoins-page'>
       <Menu />
-      <div className="content">
+      <div className='content'>
         <Switch>
           <Route path={`${match.url}/trades/:tradeHash`}>
             <Trades />
@@ -19,7 +19,7 @@ export const SellBitcoinsPage : FC = () => {
         </Switch>
       </div>
     </div>
-  )
+  );
 };
 
 export default SellBitcoinsPage;

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IUsersStore } from 'src/interfaces/store';
 
-const initialState : IUsersStore = {
+const initialState: IUsersStore = {
   data: [
     {
       id: 0,
@@ -16,7 +16,7 @@ const initialState : IUsersStore = {
       avatar: '/static/img/seller.png',
       ratingPros: 20,
       ratingCons: 2
-    },
+    }
   ],
   currentUser: 0
 };
@@ -28,7 +28,7 @@ export const usersSlice = createSlice({
     switchUser: (state) => {
       state.currentUser = state.currentUser === 0 ? 1 : 0;
     }
-  } 
+  }
 });
 
 export const { switchUser } = usersSlice.actions;

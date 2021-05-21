@@ -1,3 +1,4 @@
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { SELL_BITCOINS_PATH } from 'src/constants/routes';
@@ -6,11 +7,11 @@ import SellBitcoinsPage from 'src/view/pages/SellBitcoinsPage/SellBitcoinsPage';
 import { Nav } from '../components/Nav';
 import './App.css';
 
-function App() {
+const App: FC = () => {
   const dispatch = useDispatch();
   dispatch(fetchBitcoinRate());
   return (
-    <div className="App">
+    <div className='App'>
       <Router>
         <Nav />
         <Switch>
@@ -21,6 +22,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;

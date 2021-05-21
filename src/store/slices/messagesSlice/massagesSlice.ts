@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IMessage } from 'src/interfaces/IMessage';
 import { IMessagesStore } from 'src/interfaces/store';
 
-const initialState : IMessagesStore = {
+const initialState: IMessagesStore = {
   data: [
     {
       id: 0,
@@ -10,7 +10,7 @@ const initialState : IMessagesStore = {
       senderId: 0,
       receiverId: 1,
       text: 'Never gonna give you up',
-      date: "2021-05-04T11:55:50.417",
+      date: '2021-05-04T11:55:50.417',
       isRead: true
     },
     {
@@ -19,7 +19,7 @@ const initialState : IMessagesStore = {
       senderId: 0,
       receiverId: 1,
       text: 'Never gonna let you down',
-      date: "2021-05-04T11:55:50.417",
+      date: '2021-05-04T11:55:50.417',
       isRead: true
     },
     {
@@ -28,7 +28,7 @@ const initialState : IMessagesStore = {
       senderId: 1,
       receiverId: 0,
       text: 'Never gonna run around',
-      date: "2021-05-04T11:55:50.417",
+      date: '2021-05-04T11:55:50.417',
       isRead: true
     },
     {
@@ -37,7 +37,7 @@ const initialState : IMessagesStore = {
       senderId: 0,
       receiverId: 1,
       text: 'and desert you',
-      date: "2021-05-04T11:55:50.417",
+      date: '2021-05-04T11:55:50.417',
       isRead: false
     },
     {
@@ -46,7 +46,7 @@ const initialState : IMessagesStore = {
       senderId: 1,
       receiverId: 0,
       text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-      date: "2021-05-04T11:55:50.417",
+      date: '2021-05-04T11:55:50.417',
       isRead: true
     },
     {
@@ -66,7 +66,7 @@ const initialState : IMessagesStore = {
       text: 'Lorem Ipsum is simply dummy text',
       date: new Date('2021-05-04').toString(),
       isRead: false
-    },
+    }
   ]
 };
 
@@ -84,10 +84,15 @@ export const messagesSlice = createSlice({
     },
     readMessages: (state, action: PayloadAction<ReadProps>) => {
       state.data
-        .filter((message : IMessage) => 
-          message.tradeHash === action.payload.tradeHash 
-          && message.receiverId === action.payload.receiverId)
-        .map(message => message.isRead = true)
+        .filter(
+          (message: IMessage) =>
+            message.tradeHash === action.payload.tradeHash &&
+            message.receiverId === action.payload.receiverId
+        )
+        .map((message) => {
+          message.isRead = true;
+          return message;
+        });
     }
   }
 });

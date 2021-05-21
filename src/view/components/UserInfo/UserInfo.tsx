@@ -1,23 +1,25 @@
-import { Avatar } from 'src/view/components/Avatar';
-import React, {FC, useCallback} from 'react';
+import React, { FC, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IUser } from 'src/interfaces/IUser';
-import { 
+import {
   executeTransaction,
-  getBitcoinRateSelector, 
-  getCurrentTradeSelector, 
-  getTradesSelector, 
-  getUsersSelector 
+  getBitcoinRateSelector,
+  getCurrentTradeSelector,
+  getTradesSelector,
+  getUsersSelector
 } from 'src/store/slices';
-import './UserInfo.style.css';
+import { Avatar } from 'src/view/components/Avatar';
 import { NOT_PAID, PAID } from 'src/constants/constants';
+import './UserInfo.style.css';
 
-export const UserInfo : FC = () => {
+export const UserInfo: FC = () => {
   const dispatch = useDispatch();
 
   const trades = useSelector(getTradesSelector);
   const currentTrade = useSelector(getCurrentTradeSelector);
-  const counterUser = useSelector(getUsersSelector).find((user : IUser) => user.id === currentTrade?.buyerId)!;
+  const counterUser = useSelector(getUsersSelector).find(
+    (user: IUser) => user.id === currentTrade?.buyerId
+  )!;
   const bitcoinRate = useSelector(getBitcoinRateSelector);
 
   const handleClick = useCallback(() => {
@@ -25,42 +27,55 @@ export const UserInfo : FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="user-info">
-      <p className="title">You are trading with <b>{counterUser?.login}</b></p>
-      <p className="time">Started 23 minutes ago</p>
-      <button onClick={handleClick}>Release bitcoins</button>
-      <div className="table">
+    <div className='user-info'>
+      <p className='title'>
+        You are trading with <b>{counterUser?.login}</b>
+      </p>
+      <p className='time'>Started 23 minutes ago</p>
+      <button type='button' onClick={handleClick}>
+        Release bitcoins
+      </button>
+      <div className='table'>
         <div>
-          <Avatar src={counterUser.avatar} login={counterUser.login}/>
+          <Avatar src={counterUser.avatar} login={counterUser.login} />
           <p>
-            <span className="success">+{counterUser.ratingPros}</span>
+            <span className='success'>+{counterUser.ratingPros}</span>
             <span> / </span>
-            <span className="fail">-{counterUser.ratingCons}</span>
+            <span className='fail'>-{counterUser.ratingCons}</span>
           </p>
         </div>
         <div>
-          <p className="table-title"># OF TRADES</p>
+          <p className='table-title'># OF TRADES</p>
           <p>{trades.length}</p>
         </div>
         <div>
-          <p className="table-title">Trade status:</p>
-          <p>{currentTrade?.paid ? <span className='success'>{PAID}</span> : NOT_PAID}</p>
+          <p className='table-title'>Trade status:</p>
+          <p>
+            {currentTrade?.paid ? (
+              <span className='success'>{PAID}</span>
+            ) : (
+              NOT_PAID
+            )}
+          </p>
         </div>
         <div>
-          <p className="table-title">TRADE HASH:</p>
+          <p className='table-title'>TRADE HASH:</p>
           <p>{currentTrade?.hash}</p>
         </div>
         <div>
-          <p className="table-title">AMOUNT USD</p>
+          <p className='table-title'>AMOUNT USD</p>
           <p>{currentTrade?.amount.toFixed(2)}</p>
         </div>
         <div>
-          <p className="table-title">AMOUNT BTC</p>
-          <p>{bitcoinRate && ((currentTrade?.amount || 0) / Number(bitcoinRate)).toFixed(8) }</p>
+          <p className='table-title'>AMOUNT BTC</p>
+          <p>
+            {bitcoinRate &&
+              ((currentTrade?.amount || 0) / Number(bitcoinRate)).toFixed(8)}
+          </p>
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default UserInfo;

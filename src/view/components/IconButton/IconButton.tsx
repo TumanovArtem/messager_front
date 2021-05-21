@@ -1,15 +1,19 @@
-import React, { ButtonHTMLAttributes, FC, MouseEventHandler } from "react";
+import React, { ButtonHTMLAttributes, FC, MouseEventHandler } from 'react';
 import './IconButton.style.css';
 
 interface IIconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  icon: JSX.Element,
-  handleClick: MouseEventHandler<HTMLButtonElement>
+  icon: JSX.Element;
+  handleClick: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const IconButton : FC<IIconButtonProps> = ( {icon, handleClick, className} ) => {
+export const IconButton: FC<IIconButtonProps> = ({
+  icon,
+  handleClick,
+  className
+}) => {
   return (
-    <button className={`icon ${className}`}  onClick={handleClick} >
+    <button type='button' className={`icon ${className}`} onClick={handleClick}>
       {icon}
     </button>
-  )
+  );
 };

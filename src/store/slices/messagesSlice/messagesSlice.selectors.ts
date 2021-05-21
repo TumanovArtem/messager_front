@@ -1,3 +1,5 @@
-import { IStoreState } from "src/interfaces/store";
+import { IMessage } from 'src/interfaces/IMessage';
+import { IStoreState } from 'src/interfaces/store';
 
-export const getMessagesSelector = (state : IStoreState) => state.messages.data;
+export const getMessagesSelector = (state: IStoreState): IMessage[] =>
+  state.messages.data;

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ITrade } from 'src/interfaces/ITrade';
 import { ITradesStore } from 'src/interfaces/store';
 
-const initialState : ITradesStore = {
+const initialState: ITradesStore = {
   data: [
     {
       id: 0,
@@ -12,7 +12,7 @@ const initialState : ITradesStore = {
       method: 'Amazon Gift Card',
       amount: 77,
       paid: true,
-      date: "2021-05-04T11:55:50.417"
+      date: '2021-05-04T11:55:50.417'
     },
     {
       id: 1,
@@ -22,7 +22,7 @@ const initialState : ITradesStore = {
       method: 'iTunes Gift Card',
       amount: 30,
       paid: false,
-      date: "2021-05-04T11:55:50.417"
+      date: '2021-05-04T11:55:50.417'
     },
     {
       id: 2,
@@ -32,11 +32,11 @@ const initialState : ITradesStore = {
       method: 'PayPal',
       amount: 500,
       paid: false,
-      date: "2021-05-04T11:55:50.417"
+      date: '2021-05-04T11:55:50.417'
     }
   ],
   currentTrade: null
-}
+};
 
 export const tradesSlice = createSlice({
   name: 'trades',
@@ -46,36 +46,39 @@ export const tradesSlice = createSlice({
       state.data.push(action.payload);
     },
     executeTransaction: (state) => {
-      const trade = state.data.find((trade : ITrade) => trade.hash === state.currentTrade);
+      const trade = state.data.find(
+        ({ hash }: ITrade) => hash === state.currentTrade
+      );
       trade && (trade.paid = true);
     },
     changeCurrentTrade: (state, action: PayloadAction<string | null>) => {
       state.currentTrade = action.payload;
     },
     deleteTrade: (state, action: PayloadAction<number>) => {
-      const newData = state.data.filter((trade : ITrade) => trade.id !== action.payload);
+      const newData = state.data.filter(
+        ({ id }: ITrade) => id !== action.payload
+      );
       return {
         ...state,
         data: newData,
         currentTrade: null
-      }
+      };
     },
     switchRoles: (state) => {
-      const data = state.data.map((trade: ITrade) => {
-        const sellerId = trade.sellerId;
-        const buyerId = trade.buyerId;
-        const newTrade = {
-          ...trade,
-          sellerId: buyerId, 
-          buyerId: sellerId,
-        }
-        return newTrade;
-      });
-      const currentTrade : any = data.find((trade : ITrade) => trade.hash === state.currentTrade);
-      return {...state, data, currentTrade };
+      const data = state.data.map((trade: ITrade) => ({
+        ...trade,
+        sellerId: trade.buyerId,
+        buyerId: trade.sellerId
+      }));
+      return { ...state, data };
     }
   }
 });
 
-export const { changeCurrentTrade, executeTransaction, deleteTrade, switchRoles } = tradesSlice.actions;
+export const {
+  changeCurrentTrade,
+  executeTransaction,
+  deleteTrade,
+  switchRoles
+} = tradesSlice.actions;
 export const tradesReducer = tradesSlice.reducer;

@@ -7,7 +7,9 @@ const initialState = {
 export const fetchBitcoinRate = createAsyncThunk(
   'bitcoinRate/fetch',
   async () => {
-    const response = await fetch('https://api.coindesk.com/v1/bpi/currentprice/USD.json');
+    const response = await fetch(
+      'https://api.coindesk.com/v1/bpi/currentprice/USD.json'
+    );
     const body = await response.json();
     return body.bpi.USD.rate_float;
   }
@@ -25,4 +27,3 @@ export const bitcoinRateSlice = createSlice({
 });
 
 export const bitcoinRateReducer = bitcoinRateSlice.reducer;
-
