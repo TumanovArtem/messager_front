@@ -12,6 +12,7 @@
   text-align: left;
   position: relative;
   padding: 10px 8% 10px 12%;
+  font-size: 15px;
 }
 
 .trade-card.active, .trade-card:hover {
@@ -30,7 +31,7 @@
   border-radius: 50%;
   background: var(--border-color);
   position: absolute;
-  top: 31px;
+  top: 30px;
   left: 7%;
 }
 

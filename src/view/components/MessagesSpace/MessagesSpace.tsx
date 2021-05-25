@@ -37,10 +37,9 @@ export const MessagesSpace: FC<{
         currentTrade &&
         dispatch(
           addMessage({
-            id: messages.length,
             tradeHash: currentTrade?.hash,
             senderId: currentUser.id,
-            receiverId: counterUser?.id,
+            receiverId: counterUser.id,
             text: value.trim(),
             date: new Date().toString(),
             isRead: false
@@ -65,7 +64,6 @@ export const MessagesSpace: FC<{
         <ul>
           {messages.map((message) => (
             <Message
-              key={message.id}
               message={message}
               user={
                 currentUser.id === message.senderId ? currentUser : counterUser

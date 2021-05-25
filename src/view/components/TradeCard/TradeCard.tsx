@@ -77,7 +77,7 @@ export const TradeCard: FC<{
         </div>
       </div>
       <div className='payment-status'>
-        <Avatar src={counterUser?.avatar} login={counterUser?.login} />
+        <Avatar src={counterUser.avatar} login={counterUser.login} />
         <p>{trade.paid ? <span className='success'>{PAID}</span> : NOT_PAID}</p>
       </div>
     </button>

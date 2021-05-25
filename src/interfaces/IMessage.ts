@@ -1,5 +1,4 @@
 export interface IMessage {
-  id: number;
   tradeHash: string;
   senderId: number;
   receiverId: number;
