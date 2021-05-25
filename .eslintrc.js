@@ -31,6 +31,7 @@ module.exports = {
     'react/require-default-props': [0],
     'import/no-extraneous-dependencies': 'off',
     'no-use-before-define': 'off',
+    'no-shadow': 'off',
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/no-object-literal-type-assertion': 0,
     '@typescript-eslint/no-empty-interface': 0,

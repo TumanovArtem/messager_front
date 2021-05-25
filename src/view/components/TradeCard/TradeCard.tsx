@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { IMessage } from 'src/interfaces/IMessage';
 import classNames from 'classnames';
-import { NOT_PAID, PAID } from 'src/constants/constants';
+import { Payment } from 'src/constants/constants';
 import { Avatar } from '../Avatar';
 import './TradeCard.style.css';
 
@@ -77,7 +77,13 @@ export const TradeCard: FC<{
       </div>
       <div className='payment-status'>
         <Avatar src={counterUser.avatar} login={counterUser.login} />
-        <p>{trade.paid ? <span className='success'>{PAID}</span> : NOT_PAID}</p>
+        <p>
+          {trade.paid ? (
+            <span className='success'>{Payment.Paid}</span>
+          ) : (
+            Payment.NotPaid
+          )}
+        </p>
       </div>
     </button>
   );

@@ -9,7 +9,7 @@ import {
   getUsersSelector
 } from 'src/store/slices';
 import { Avatar } from 'src/view/components/Avatar';
-import { NOT_PAID, PAID } from 'src/constants/constants';
+import { Payment } from 'src/constants/constants';
 import './UserInfo.style.css';
 
 export const UserInfo: FC = () => {
@@ -52,9 +52,9 @@ export const UserInfo: FC = () => {
           <p className='table-title'>Trade status:</p>
           <p>
             {currentTrade?.paid ? (
-              <span className='success'>{PAID}</span>
+              <span className='success'>{Payment.Paid}</span>
             ) : (
-              NOT_PAID
+              Payment.NotPaid
             )}
           </p>
         </div>
