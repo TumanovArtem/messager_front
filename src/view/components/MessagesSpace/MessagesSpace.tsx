@@ -5,7 +5,6 @@ import { IUser } from 'src/interfaces/IUser';
 import {
   addMessage,
   getCurrentUserSelector,
-  getMessagesSelector,
   getUsersSelector
 } from 'src/store/slices';
 import hash from 'object-hash';
@@ -17,9 +16,7 @@ export const MessagesSpace: FC<{
 }> = ({ currentTrade }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(getCurrentUserSelector);
-  const messages = useSelector(getMessagesSelector).filter(
-    (message) => message.tradeHash === currentTrade?.hash
-  );
+  const messages = currentTrade?.messages;
   const counterUser = useSelector(getUsersSelector).find(
     ({ id }: IUser) => id === currentTrade?.buyerId
   )!;
@@ -38,7 +35,6 @@ export const MessagesSpace: FC<{
         dispatch(
           addMessage({
             id: hash(new Date()),
-            tradeHash: currentTrade?.hash,
             senderId: currentUser.id,
             receiverId: counterUser.id,
             text: value.trim(),
@@ -63,8 +59,9 @@ export const MessagesSpace: FC<{
     <div className='messages-space-wrapper'>
       <div className='messages-space'>
         <ul>
-          {messages.map((message) => (
+          {messages?.map((message) => (
             <Message
+              key={message.id}
               message={message}
               user={
                 currentUser.id === message.senderId ? currentUser : counterUser

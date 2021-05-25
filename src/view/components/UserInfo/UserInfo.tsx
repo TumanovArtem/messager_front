@@ -60,7 +60,7 @@ export const UserInfo: FC = () => {
         </div>
         <div>
           <p className='table-title'>TRADE HASH:</p>
-          <p>{currentTrade?.hash}</p>
+          <p>{currentTrade?.id}</p>
         </div>
         <div>
           <p className='table-title'>AMOUNT USD</p>

@@ -6,7 +6,6 @@ import {
   getBitcoinRateSelector,
   getCurrentTradeSelector,
   getCurrentUserSelector,
-  getMessagesSelector,
   getUsersSelector,
   readMessages
 } from 'src/store/slices';
@@ -26,28 +25,28 @@ export const TradeCard: FC<{
   const counterUser = useSelector(getUsersSelector).find(
     (user: IUser) => user.id === trade.buyerId
   )!;
-  const newMessages = useSelector(getMessagesSelector).filter(
-    (message: IMessage) =>
-      message.tradeHash === trade.hash &&
-      message.receiverId === currentUser.id &&
-      !message.isRead
+
+  const newMessages = trade.messages.filter(
+    ({ receiverId, isRead }: IMessage) =>
+      receiverId === currentUser.id && !isRead
   );
   const bitcoinRate = useSelector(getBitcoinRateSelector);
 
   const handleClick = useCallback(() => {
-    dispatch(changeCurrentTrade(trade.hash));
+    dispatch(changeCurrentTrade(trade.id));
   }, [trade, dispatch]);
 
   const isCurrentTrade = currentTrade?.id === trade.id;
 
   useEffect(() => {
-    dispatch(
-      readMessages({
-        tradeHash: currentTrade?.hash,
-        receiverId: currentUser?.id
-      })
-    );
-  }, [isCurrentTrade, currentTrade?.hash, currentUser.id, dispatch]);
+    currentTrade &&
+      dispatch(
+        readMessages({
+          id: currentTrade?.id,
+          receiverId: currentUser?.id
+        })
+      );
+  }, [isCurrentTrade, currentTrade?.id, currentUser.id, dispatch]);
 
   const bitcoins = useMemo(
     () => (trade.amount / Number(bitcoinRate)).toFixed(8),

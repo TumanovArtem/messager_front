@@ -11,7 +11,7 @@ export const TradeList: FC = () => {
   return (
     <div className='trades'>
       {trades.map((trade) => (
-        <Link to={`${match.path.split(':')[0]}:${trade.hash}`} key={trade.hash}>
+        <Link to={`${match.path.split(':')[0]}:${trade.id}`} key={trade.id}>
           <TradeCard trade={trade} />
         </Link>
       ))}

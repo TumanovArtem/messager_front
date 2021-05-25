@@ -1,8 +1,10 @@
+import { IMessage } from './IMessage';
+
 export interface ITrade {
-  id: number;
-  hash: string;
+  id: string;
   sellerId: number;
   buyerId: number;
+  messages: IMessage[];
   method: string;
   amount: number;
   paid: boolean;

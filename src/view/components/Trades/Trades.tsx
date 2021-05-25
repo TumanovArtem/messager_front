@@ -24,10 +24,8 @@ export const Trades: FC = () => {
   const { tradeHash } = useParams<ParamTypes>();
 
   useEffect(() => {
-    const trade = trades.find(
-      ({ hash }: ITrade) => hash === tradeHash.slice(1)
-    );
-    dispatch(changeCurrentTrade(trade?.hash || null));
+    const trade = trades.find(({ id }: ITrade) => id === tradeHash.slice(1));
+    dispatch(changeCurrentTrade(trade?.id || null));
   }, [dispatch, tradeHash, trades]);
 
   return !trades.length ? (
