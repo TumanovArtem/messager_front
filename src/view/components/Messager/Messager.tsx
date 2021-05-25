@@ -28,12 +28,12 @@ export const Messager: FC = () => {
   const handleDeleteTrade = useCallback(() => {
     currentTrade && dispatch(deleteTrade(currentTrade?.id));
     history.push(`${SELL_BITCOINS_PATH}${TRADES_PATH}`);
-  }, [currentTrade, dispatch, history]);
+  }, [currentTrade]);
 
   const handleSwitchUser = useCallback(() => {
     dispatch(switchRoles());
     dispatch(switchUser());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className='messager'>

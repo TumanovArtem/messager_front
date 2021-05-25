@@ -26,12 +26,12 @@ export const Trades: FC = () => {
   useEffect(() => {
     const trade = trades.find(({ id }: ITrade) => id === tradeHash.slice(1));
     dispatch(changeCurrentTrade(trade?.id || null));
-  }, [dispatch, tradeHash, trades]);
+  }, [tradeHash, trades]);
 
   return !trades.length ? (
     <h1 className='no-open-trades'>{NO_OPEN_TRADES}</h1>
   ) : (
-    <>
+    <div className='content'>
       <TradeList />
       {currentTrade && (
         <>
@@ -39,6 +39,6 @@ export const Trades: FC = () => {
           <UserInfo />
         </>
       )}
-    </>
+    </div>
   );
 };

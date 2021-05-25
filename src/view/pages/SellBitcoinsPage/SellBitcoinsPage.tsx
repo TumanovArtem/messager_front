@@ -11,13 +11,11 @@ export const SellBitcoinsPage: FC = () => {
   return (
     <div className='bitcoins-page'>
       <Menu />
-      <div className='content'>
-        <Switch>
-          <Route path={`${match.url}/trades/:tradeHash`}>
-            <Trades />
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route path={`${match.url}/trades/:tradeHash`}>
+          <Trades />
+        </Route>
+      </Switch>
     </div>
   );
 };

@@ -50,7 +50,7 @@ export const TradeCard: FC<{
 
   const bitcoins = useMemo(
     () => (trade.amount / Number(bitcoinRate)).toFixed(8),
-    [bitcoinRate, trade.amount]
+    [bitcoinRate, trade]
   );
 
   return (

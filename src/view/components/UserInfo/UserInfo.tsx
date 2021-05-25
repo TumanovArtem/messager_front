@@ -24,12 +24,12 @@ export const UserInfo: FC = () => {
 
   const handleClick = useCallback(() => {
     dispatch(executeTransaction());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className='user-info'>
       <p className='title'>
-        You are trading with <b>{counterUser?.login}</b>
+        You are trading with <b>{counterUser.login}</b>
       </p>
       <p className='time'>Started 23 minutes ago</p>
       <button type='button' onClick={handleClick}>
@@ -45,7 +45,7 @@ export const UserInfo: FC = () => {
           </p>
         </div>
         <div>
-          <p className='table-title'># OF TRADES</p>
+          <p className='table-title'># OF TRADES:</p>
           <p>{trades.length}</p>
         </div>
         <div>
@@ -63,11 +63,11 @@ export const UserInfo: FC = () => {
           <p>{currentTrade?.id}</p>
         </div>
         <div>
-          <p className='table-title'>AMOUNT USD</p>
+          <p className='table-title'>AMOUNT USD:</p>
           <p>{currentTrade?.amount.toFixed(2)}</p>
         </div>
         <div>
-          <p className='table-title'>AMOUNT BTC</p>
+          <p className='table-title'>AMOUNT BTC:</p>
           <p>
             {bitcoinRate &&
               ((currentTrade?.amount || 0) / Number(bitcoinRate)).toFixed(8)}

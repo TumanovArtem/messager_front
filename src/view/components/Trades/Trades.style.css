@@ -1,3 +1,14 @@
 .no-open-trades {
   width: 100%;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  align-items: stretch;
 }
