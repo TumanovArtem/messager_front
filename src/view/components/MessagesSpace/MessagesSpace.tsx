@@ -8,6 +8,7 @@ import {
   getMessagesSelector,
   getUsersSelector
 } from 'src/store/slices';
+import hash from 'object-hash';
 import { Message } from '../Message';
 import './MessagesSpace.style.css';
 
@@ -15,7 +16,6 @@ export const MessagesSpace: FC<{
   currentTrade: ITrade | null;
 }> = ({ currentTrade }) => {
   const dispatch = useDispatch();
-
   const currentUser = useSelector(getCurrentUserSelector);
   const messages = useSelector(getMessagesSelector).filter(
     (message) => message.tradeHash === currentTrade?.hash
@@ -37,6 +37,7 @@ export const MessagesSpace: FC<{
         currentTrade &&
         dispatch(
           addMessage({
+            id: hash(new Date()),
             tradeHash: currentTrade?.hash,
             senderId: currentUser.id,
             receiverId: counterUser.id,

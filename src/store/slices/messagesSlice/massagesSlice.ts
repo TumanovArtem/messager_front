@@ -5,6 +5,7 @@ import { IMessagesStore } from 'src/interfaces/store';
 const initialState: IMessagesStore = {
   data: [
     {
+      id: 'dfsfsd',
       tradeHash: 'a',
       senderId: 0,
       receiverId: 1,
@@ -13,6 +14,7 @@ const initialState: IMessagesStore = {
       isRead: true
     },
     {
+      id: 'fsdss',
       tradeHash: 'a',
       senderId: 0,
       receiverId: 1,
@@ -21,6 +23,7 @@ const initialState: IMessagesStore = {
       isRead: true
     },
     {
+      id: 'asdasdc3',
       tradeHash: 'a',
       senderId: 1,
       receiverId: 0,
@@ -29,6 +32,7 @@ const initialState: IMessagesStore = {
       isRead: true
     },
     {
+      id: 'ffdsfsdfg4',
       tradeHash: 'a',
       senderId: 0,
       receiverId: 1,
@@ -37,6 +41,7 @@ const initialState: IMessagesStore = {
       isRead: false
     },
     {
+      id: 'fw32fg',
       tradeHash: 'abc',
       senderId: 1,
       receiverId: 0,
@@ -45,6 +50,7 @@ const initialState: IMessagesStore = {
       isRead: true
     },
     {
+      id: 'gfg23rg',
       tradeHash: 'abc',
       senderId: 0,
       receiverId: 1,
@@ -53,6 +59,7 @@ const initialState: IMessagesStore = {
       isRead: true
     },
     {
+      id: 'gfdg322',
       tradeHash: 'abc',
       senderId: 1,
       receiverId: 0,

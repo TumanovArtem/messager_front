@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@types/object-hash": "^2.1.0",
     "@types/react-router-dom": "^5.1.7",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
